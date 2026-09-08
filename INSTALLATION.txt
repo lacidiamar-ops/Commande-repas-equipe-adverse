@@ -1,0 +1,76 @@
+COMMANDE REPAS — VERSION 36
+============================
+
+DEPLOIEMENT CLOUDFLARE
+1. Ouvrir Cloudflare > Workers & Pages > votre projet.
+2. Créer un nouveau déploiement par envoi direct.
+3. Déposer tous les fichiers de ce dossier ensemble, ou déposer le ZIP fourni.
+4. Vérifier sur l'accueil la mention « Accueil actif · Version 36 ».
+
+CRÉER, MODIFIER ET TRANSMETTRE UNE FICHE
+1. Ouvrir Administration > 01 · Mes matchs.
+2. Repérer le match avec son code couleur : gris = à préparer, orange = transmis, bleu = commande en cours, vert = bon signé.
+3. Cliquer « Modifier la fiche » pour changer la date, le coup d'envoi, le logo, l'offre, les prix, le personnel ou le matériel.
+4. Cliquer « Enregistrer maintenant » avant de transmettre.
+5. Revenir à « 01 · Mes matchs » puis cliquer « Transmettre via WhatsApp ».
+6. Saisir le code du match, puis cliquer « Enregistrer et préparer WhatsApp ».
+7. Vérifier le message préparé et l'envoyer au club dans WhatsApp.
+8. Une demande reçue depuis l'accueil est reliée au match déjà programmé ; elle ne crée pas une deuxième fiche identique.
+
+RECUPERER UN BON SIGNE
+1. Ouvrir Administration : l'espace s'affiche maintenant en pleine page.
+2. Ouvrir l'onglet « Archives ».
+3. Cliquer sur « Ouvrir / imprimer en PDF » sur le bon souhaité.
+4. Utiliser « Imprimer / PDF » pour enregistrer le bon au format PDF.
+5. Utiliser « Télécharger l'archive sécurisée » pour conserver aussi la copie complète des données et de la signature.
+6. Une notification de signature ouvre directement le bon concerné après connexion administrateur.
+
+CONSULTER LE CHIFFRE D'AFFAIRES
+1. Ouvrir Administration > CA.
+2. Consulter le CA total HT, le total TTC et le nombre de bons comptabilisés.
+3. Chaque bloc affiche le CA du match et le détail des bons.
+4. Cliquer sur le numéro d'un bon pour rouvrir son archive signée.
+5. Seule la dernière révision signée ou confirmée de chaque équipe est comptée ; les brouillons et anciennes révisions sont exclus.
+
+NOUVEAU DEVIS FINAL
+1. Les articles sont classés par type d'offre : plats, snacking salé, desserts, boissons, location et personnel.
+2. Chaque bloc possède son propre sous-total HT.
+3. Le logo du club visiteur et le logo API–OM apparaissent sur le devis.
+4. Le numéro, la date et l'heure du devis restent stables à la réouverture.
+5. Le client signe avec le doigt, le stylet ou la souris avant l'archivage.
+6. Le bouton « Enregistrer ma commande » permet de sécuriser volontairement la reprise le lendemain.
+
+CORRECTION DES QUANTITÉS
+1. Chaque article modifié est maintenant envoyé séparément à Supabase.
+2. Une ancienne sauvegarde ne peut plus supprimer un Skyr, un jus ou une autre ligne ajoutée juste avant.
+3. Attendre la mention « Brouillon sauvegardé » avant de fermer l'application.
+
+ACTIVER LES NOTIFICATIONS SUR LE TELEPHONE D'AMAR
+1. Ouvrir le site déployé.
+2. Installer l'application sur l'écran d'accueil :
+   - iPhone/iPad : Safari > Partager > Sur l'écran d'accueil > Ajouter.
+   - Android : Chrome > menu ⋮ > Installer l'application.
+3. Ouvrir l'icône « Commande repas ».
+4. Administration > Demandes WhatsApp.
+5. Cliquer « Activer sur ce téléphone » puis accepter les notifications.
+6. La notification de test confirme l'activation.
+7. Une nouvelle notification est ensuite envoyée dès qu'un club signe et archive son bon de commande.
+
+UTILISER LE CIRCUIT WHATSAPP
+1. Le club remplit le formulaire de demande d'accès.
+2. « Ouvrir WhatsApp et envoyer » prépare automatiquement le récapitulatif pour Amar.
+3. Le club vérifie le message puis appuie sur « Envoyer » dans WhatsApp.
+4. Après sélection du match, l'administration prépare la réponse avec le lien, le code, l'échéance et la signature d'Amar.
+5. Si WhatsApp n'est pas installé sur l'appareil, utiliser « Copier le message » puis le coller manuellement.
+6. Après l'enregistrement, le bouton principal devient aussi « Ouvrir WhatsApp maintenant » afin que l'action reste toujours visible.
+
+CIRCUIT D'UNE DEMANDE
+1. Le club clique « Demander un accès et un bon » sur l'accueil.
+2. Sa demande est enregistrée et l'application prépare le message WhatsApp destiné à Amar.
+3. Le club appuie sur « Envoyer » dans WhatsApp ; Amar reçoit aussi une notification si son téléphone est activé.
+4. Dans Administration > Demandes WhatsApp, l'application relie la demande à la fiche du planning ; si elle n'existe pas, elle copie le modèle PFC puis remplace immédiatement le club, la date et le titre.
+5. Amar ouvre le message WhatsApp préparé contenant le lien, le code et l'échéance, puis appuie sur « Envoyer ».
+6. Le club commande sur téléphone ou tablette, contrôle le devis, signe et archive son bon.
+7. Amar reçoit une notification extérieure dès que le bon signé est archivé.
+
+Contact : amar.lacidi@api-restauration.com — 07 49 00 37 36
