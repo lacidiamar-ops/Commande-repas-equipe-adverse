@@ -1,4 +1,4 @@
-const VERSION = "37";
+const VERSION = "39";
 
 self.addEventListener("install", () => self.skipWaiting());
 self.addEventListener("activate", event => event.waitUntil(self.clients.claim()));
