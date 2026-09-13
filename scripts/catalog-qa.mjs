@@ -54,6 +54,7 @@ const assertions = [
   ,["Royale split quantities", runtime.pizzas.royaleTomato.cardGroup === "pz-royale-bresaola" && runtime.pizzas.royaleWhite.cardGroup === "pz-royale-bresaola"]
   ,["quote languages render", runtime.quotes.en.html.includes("QUOTE") && runtime.quotes.es.html.includes("PRESUPUESTO") && runtime.quotes.it.html.includes("PREVENTIVO")]
   ,["quote translations preserved", runtime.quotes.en.html.includes("Salmon nigiri") && runtime.quotes.es.text.includes("Nigiri de salmón") && !JSON.stringify(runtime.quotes).includes("[object Object]")]
+  ,["fallback archive translated", /construireVueArchiveSecours[\s\S]*d\("approved"\)[\s\S]*d\("fullName"\)[\s\S]*formatDateHeureLang/]
 ];
 
 const failures = assertions.filter(([,test]) => typeof test === "boolean" ? !test : !test.test(html));
