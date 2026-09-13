@@ -223,6 +223,26 @@ h1,h2,h3,h4{ margin:0; font-family:var(--f-titre); color:var(--encre); letter-sp
 .famille-tog[aria-expanded="true"] .fam-ch{ transform:rotate(-135deg); margin-top:2px; }
 .ca-photo{ display:block; width:calc(100% + 36px); margin:-17px -18px 0; aspect-ratio:4/3; object-fit:cover;
   border-radius:var(--r-m) var(--r-m) 0 0; background:#F3F1EC; }
+.ca-photo.ca-photo-produit{
+  aspect-ratio:1/1; object-fit:contain; padding:14px; box-sizing:border-box;
+  background:radial-gradient(circle at 50% 28%,#fff 0,#FBFAF7 52%,#F1EEE7 100%);
+}
+.fam-affiche{
+  grid-column:1 / -1; margin:0; overflow:hidden; border:1px solid var(--trait); border-radius:var(--r-m);
+  background:var(--blanc); box-shadow:0 10px 24px rgba(22,33,42,.05);
+}
+.fam-affiche img{ display:block; width:100%; aspect-ratio:16/6; object-fit:cover; background:#F3F1EC; }
+.fam-affiche figcaption{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:12px 15px; }
+.fam-affiche figcaption b{ font-family:var(--f-chiffre); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--encre); }
+.fam-affiche figcaption span{ font-size:11.5px; color:var(--gris); }
+.fam-affiche-vide{ min-height:132px; display:flex; align-items:center; justify-content:center; padding:18px; border-style:dashed; background:linear-gradient(135deg,#FBFAF6,#F3F0E8); }
+.fam-affiche-vide > div{ max-width:470px; text-align:center; }
+.fam-affiche-vide b{ display:block; font-family:var(--f-chiffre); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--encre); }
+.fam-affiche-vide span{ display:block; margin-top:7px; color:var(--gris); font-size:12px; line-height:1.5; }
+.fam-galerie{ grid-column:1 / -1; display:grid; grid-template-columns:repeat(auto-fit,minmax(142px,1fr)); gap:10px; }
+.fam-mini-visuel{ margin:0; overflow:hidden; border:1px solid var(--trait); border-radius:var(--r-s); background:var(--blanc); }
+.fam-mini-visuel img{ display:block; width:100%; aspect-ratio:4/3; object-fit:cover; background:#F3F1EC; }
+.fam-mini-visuel figcaption{ padding:8px 9px; font-size:10.5px; line-height:1.3; color:var(--gris); }
 .parts{ display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:18px 0 4px; padding:13px 16px;
   border:1px solid var(--trait); border-radius:var(--r-m); background:var(--blanc); }
 .parts-lib{ font-family:var(--f-chiffre); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--gris); }
@@ -916,6 +936,18 @@ table.dt .sub{ font-size:11px; color:var(--gris-clair); margin-top:2px; }
 .adm-item .adm-unit{ flex:none; width:82px; }
 .adm-check{ display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--gris); cursor:pointer; }
 .adm-check input{ flex:none; width:auto; }
+.adm-visuel{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:center; margin:0 0 12px; padding:12px; border:1px dashed var(--trait-2); border-radius:var(--r-s); background:rgba(255,255,255,.6); }
+.adm-visuel-copy b{ display:block; color:var(--encre); font-size:12px; }
+.adm-visuel-copy span{ display:block; margin-top:3px; color:var(--gris); font-size:11.5px; line-height:1.45; }
+.adm-visuel-preview{ grid-column:1 / -1; display:block; width:100%; max-height:188px; object-fit:cover; border:1px solid var(--trait); border-radius:7px; background:var(--blanc); }
+.adm-photo-actions{ display:flex; align-items:center; justify-content:flex-end; gap:8px; flex-wrap:wrap; }
+.adm-photo-label{ display:inline-flex; align-items:center; justify-content:center; min-height:32px; padding:7px 10px; border:1px solid var(--encre); border-radius:var(--r-s); background:var(--encre); color:var(--blanc); font-size:11px; font-weight:700; cursor:pointer; }
+.adm-photo-label:hover{ background:var(--encre-2); }
+.adm-photo-label input{ position:absolute; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none; }
+.adm-item-visuel{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:2px; }
+.adm-item-visuel-info{ display:flex; align-items:center; gap:8px; min-width:0; color:var(--gris); font-size:11.5px; }
+.adm-item-visuel-info img{ width:38px; height:38px; flex:none; object-fit:contain; border:1px solid var(--trait); border-radius:6px; background:#F6F4EE; }
+.adm-item-visuel .adm-photo-actions{ margin-left:auto; }
 
 .adm-x{
   flex:none; border:1px solid var(--trait-2); background:var(--blanc); color:var(--gris);
@@ -989,6 +1021,10 @@ table.dt .sub{ font-size:11px; color:var(--gris-clair); margin-top:2px; }
 @media(max-width:600px){
   .adm-item-l1{ flex-wrap:wrap; }
   .adm-item .adm-prix, .adm-item .adm-unit{ width:calc(50% - 4px); }
+  .adm-visuel{ grid-template-columns:1fr; }
+  .adm-photo-actions{ justify-content:flex-start; }
+  .adm-item-visuel{ align-items:flex-start; flex-direction:column; }
+  .adm-item-visuel .adm-photo-actions{ margin-left:0; }
   .adm-contexte{grid-template-columns:1fr}.adm-contexte-actions{justify-content:flex-start}.adm-guide{grid-template-columns:1fr}.adm-lexique{grid-template-columns:1fr}.planning-head{display:block}.planning-tools{margin-top:12px}.planning-tools input{width:100%}.planning-list{grid-template-columns:1fr}.planning-card{grid-template-columns:58px 1fr;padding:12px;gap:11px}.planning-top{display:block}.planning-top .fiche-etat{margin-top:8px}.planning-actions .bt{width:100%;justify-content:center}.ca-kpis{grid-template-columns:1fr}.ca-match-head{align-items:flex-start}.ca-table{min-width:520px}.ca-table-wrap{overflow-x:auto}.bons-entete,.bon-recu-tete{align-items:flex-start}.bons-entete{display:block}.bons-entete span{display:block;text-align:left;margin-top:8px}.bon-recu-corps{grid-template-columns:1fr}.bon-recu-total{text-align:left}.bon-recu-actions .bt{width:100%;justify-content:center}
 }
 
@@ -1279,6 +1315,17 @@ const ISSUER = {
    ============================================================ */
 const TAX = { rate: 0.10, label: "TVA 10 %" };
 
+/* Visuels des pièces Yume Sushi incluses dans les plateaux proposés. */
+const YUME_IMAGES = Object.freeze({
+  nigiriSaumon:"./assets/catalogue/yume-nigiri-saumon.webp",
+  californiaSaumon:"./assets/catalogue/yume-california-saumon.webp",
+  californiaThonCuit:"./assets/catalogue/yume-california-thon-cuit.webp",
+  makiSaumon:"./assets/catalogue/yume-maki-saumon.webp",
+  springAvocatCreamCheese:"./assets/catalogue/yume-spring-avocat-cream-cheese.webp",
+  nigiriCrevette:"./assets/catalogue/yume-nigiri-crevette.webp",
+  makiThonCuit:"./assets/catalogue/yume-maki-thon-cuit.webp"
+});
+
 /* ============================================================
    4. MISE À DISPOSITION — détail du personnel
    ============================================================ */
@@ -1378,7 +1425,32 @@ const CATALOG = {
                  es:"Maki, california y nigiri \u2014 surtido del d\u00eda",
                  it:"Maki, california e nigiri \u2014 assortimento del giorno" },
           price:1.85, unit:"pi\u00e8ce", step:6, min:6 }
-      ]}
+      ]},
+      { name:"Yume Sushi — Plateau Solo", logo:"yume", openByDefault:true,
+        photoGallery:[
+          { src:YUME_IMAGES.californiaSaumon, label:"California saumon avocat" },
+          { src:YUME_IMAGES.nigiriSaumon, label:"Nigiri saumon" },
+          { src:YUME_IMAGES.makiSaumon, label:"Maki saumon" },
+          { src:YUME_IMAGES.californiaThonCuit, label:"California thon cuit" }
+        ],
+        items:[
+          { id:"su-yume-solo-1", name:"Plateau Solo — Proposition 1 · 14 pièces", desc:"California saumon avocat ×8 · Nigiri saumon ×6", price:12.90, unit:"unité", photo:YUME_IMAGES.californiaSaumon, photoMode:"product" },
+          { id:"su-yume-solo-2", name:"Plateau Solo — Proposition 2 · 14 pièces", desc:"Maki saumon ×4 · California saumon avocat ×4 · California thon cuit ×4 · Nigiri saumon ×2", price:12.90, unit:"unité", photo:YUME_IMAGES.makiSaumon, photoMode:"product" },
+          { id:"su-yume-solo-3", name:"Plateau Solo — Proposition 3 · 14 pièces", desc:"California saumon ×8 · California thon cuit ×4 · Nigiri saumon ×2", price:12.90, unit:"unité", photo:YUME_IMAGES.californiaThonCuit, photoMode:"product" }
+        ]
+      },
+      { name:"Yume Sushi — Plateau Duo", logo:"yume", openByDefault:true,
+        photoGallery:[
+          { src:YUME_IMAGES.nigiriSaumon, label:"Nigiri saumon" },
+          { src:YUME_IMAGES.nigiriCrevette, label:"Nigiri crevette" },
+          { src:YUME_IMAGES.californiaSaumon, label:"California saumon avocat" },
+          { src:YUME_IMAGES.springAvocatCreamCheese, label:"Spring roll avocat & cream cheese" },
+          { src:YUME_IMAGES.makiThonCuit, label:"Maki thon cuit" }
+        ],
+        items:[
+          { id:"su-yume-duo-1", name:"Plateau Duo — Proposition 1 · 32 pièces", desc:"Nigiri saumon ×4 · Nigiri crevette ×4 · California saumon avocat ×8 · Spring roll avocat cream cheese ×8 · Maki thon cuit ×8", price:32.00, unit:"unité", photo:YUME_IMAGES.springAvocatCreamCheese, photoMode:"product" }
+        ]
+      }
     ]
   },
 
@@ -1403,7 +1475,7 @@ const CATALOG = {
       ]},
       { name:"Desserts", items:[
         { id:"mm-cheesecake", name:"Cheesecake mangue-passion", desc:"Recette réduite en sucre, crumble", price:4.38, meatFree:true },
-        { id:"mm-fruits", name:"Salade de fruits frais", desc:"Mangue, ananas, mûres, framboises — contenant inclus", price:3.89, meatFree:true }
+        { id:"mm-fruits", name:"Salade de fruits frais", desc:"Base mangue & ananas, topping framboise — contenant inclus", price:3.89, meatFree:true, photo:"./assets/catalogue/dessert-salade-fruits.webp", photoMode:"product" }
       ]}
     ]
   },
@@ -1412,10 +1484,16 @@ const CATALOG = {
     label: "Boissons",
     locked: false,
     groups: [
-      { name:"Boissons individuelles", items:[
-        { id:"bv-st-yorre", name:"St-Yorre", desc:"Eau minérale naturelle gazeuse St-Yorre", price:1.50, unit:"unité", note:"Tarif HT modifiable par l’administrateur" },
-        { id:"bv-coca-zero", name:"Coca-Cola Zero", desc:"Boisson gazeuse sans sucres Coca-Cola Zero", price:1.82, unit:"unité" },
-        { id:"bv-coca-classique", name:"Coca-Cola classique", desc:"Boisson gazeuse Coca-Cola goût original", price:1.82, unit:"unité" }
+      { name:"Boissons individuelles", openByDefault:true, items:[
+        { id:"bv-st-yorre", name:"St-Yorre", desc:"Eau minérale naturelle gazeuse St-Yorre", price:1.50, unit:"unité", note:"Tarif HT modifiable par l’administrateur", photo:"./assets/catalogue/boisson-st-yorre.webp", photoMode:"product" },
+        { id:"bv-coca-zero", name:"Coca-Cola Zero", desc:"Boisson gazeuse sans sucres Coca-Cola Zero", price:1.82, unit:"unité", photo:"./assets/catalogue/boisson-coca-zero.webp", photoMode:"product" },
+        { id:"bv-coca-classique", name:"Coca-Cola classique", desc:"Boisson gazeuse Coca-Cola goût original", price:1.82, unit:"unité", photo:"./assets/catalogue/boisson-coca-classique.webp", photoMode:"product" },
+        { id:"bv-smoothie-mangue-passion", name:"Smoothie Gaspard — mangue-passion", desc:"Smoothie frais mangue-passion — 250 ml", price:null, unit:"unité", note:"Tarif repris de la référence Smoothie de la fiche", photo:"./assets/catalogue/boisson-smoothie-mangue-passion.webp", photoMode:"product" },
+        { id:"bv-smoothie-fraise-banane", name:"Smoothie Gaspard — fraise-banane", desc:"Smoothie frais fraise-banane — 250 ml", price:null, unit:"unité", note:"Tarif repris de la référence Smoothie de la fiche", photo:"./assets/catalogue/boisson-smoothie-fraise-banane.webp", photoMode:"product" },
+        { id:"bv-skyr-fruits-rouges", name:"Skyr à boire — fruits rouges", desc:"Boisson lactée riche en protéines, 0 % M.G. — 270 g", price:null, unit:"unité", note:"Tarif repris de la référence Skyr de la fiche", photo:"./assets/catalogue/boisson-skyr-fruits-rouges.webp", photoMode:"product" },
+        { id:"bv-skyr-vanille", name:"Skyr à boire — vanille", desc:"Boisson lactée riche en protéines, 0 % M.G. — 270 g", price:null, unit:"unité", note:"Tarif repris de la référence Skyr de la fiche", photo:"./assets/catalogue/boisson-skyr-vanille.webp", photoMode:"product" },
+        { id:"bv-heineken", name:"Bière Heineken", desc:"Bière blonde", price:2.20, unit:"unité", note:"À consommer avec modération", halal:false, photo:"./assets/catalogue/boisson-heineken.webp", photoMode:"product" },
+        { id:"bv-budweiser", name:"Bière Budweiser", desc:"Bière blonde", price:2.20, unit:"unité", note:"À consommer avec modération", halal:false, photo:"./assets/catalogue/boisson-budweiser.webp", photoMode:"product" }
       ]}
     ]
   },
@@ -1427,6 +1505,10 @@ const CATALOG = {
     groups: [
       { name:"Location", items:[
         { id:"mt-etuve", name:"Étuve de maintien en température", desc:"Location pour la durée de l'événement", price:170, unit:"unité" }
+      ]},
+      { name:"Usage unique", openByDefault:true, items:[
+        { id:"mt-sac-kraft", name:"Sac kraft marron", desc:"Sac papier kraft avec poignées", price:0.42, unit:"unité", photo:"./assets/catalogue/usage-sac-kraft.webp", photoMode:"product" },
+        { id:"mt-kit-couverts-kraft", name:"Kit couverts kraft", desc:"Kit à usage unique : couverts en bois, serviette et pochette kraft", price:0.88, unit:"unité", photo:"./assets/catalogue/usage-kit-couverts-kraft.webp", photoMode:"product" }
       ]}
     ]
   }
@@ -1436,7 +1518,183 @@ const CATALOG = {
 const PIZZAS_REF = JSON.parse(JSON.stringify(CATALOG.pizzas));
 const PHOTOS_REF = {};
 PIZZAS_REF.groups.forEach(g => (g.items || []).forEach(it => { if (it.photo) PHOTOS_REF[it.id] = it.photo; }));
+
+/* Visuels catalogue et compléments appliqués aussi aux fiches enregistrées avant cette version. */
+const ASSETS_CATALOGUE = Object.freeze({
+  stYorre:"./assets/catalogue/boisson-st-yorre.webp",
+  cocaZero:"./assets/catalogue/boisson-coca-zero.webp",
+  cocaClassique:"./assets/catalogue/boisson-coca-classique.webp",
+  heineken:"./assets/catalogue/boisson-heineken.webp",
+  budweiser:"./assets/catalogue/boisson-budweiser.webp",
+  smoothieMangue:"./assets/catalogue/boisson-smoothie-mangue-passion.webp",
+  smoothieFraise:"./assets/catalogue/boisson-smoothie-fraise-banane.webp",
+  skyrFruits:"./assets/catalogue/boisson-skyr-fruits-rouges.webp",
+  skyrVanille:"./assets/catalogue/boisson-skyr-vanille.webp",
+  pomPotes:"./assets/catalogue/boisson-pompotes-pomme.webp",
+  saladeFruits:"./assets/catalogue/dessert-salade-fruits.webp",
+  sacKraft:"./assets/catalogue/usage-sac-kraft.webp",
+  couvertsKraft:"./assets/catalogue/usage-kit-couverts-kraft.webp"
+});
+
+function texteCatalogue(value){
+  if (value && typeof value === "object") return value.fr || value.en || value.es || value.it || Object.values(value)[0] || "";
+  return value || "";
+}
+function normaliserCatalogue(value){
+  return String(texteCatalogue(value)).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+}
+function texteArticleCatalogue(item){ return normaliserCatalogue(`${texteCatalogue(item && item.name)} ${texteCatalogue(item && item.desc)}`); }
+function trouverGroupeCatalogue(section, nom, indice){
+  if (!section.groups) section.groups = [];
+  let groupe = section.groups.find(g => normaliserCatalogue(g.name).includes(indice || normaliserCatalogue(nom)));
+  if (!groupe){ groupe = { name:nom, items:[] }; section.groups.push(groupe); }
+  if (!Array.isArray(groupe.items)) groupe.items = [];
+  return groupe;
+}
+function trouverArticleCatalogue(groupe, definition, reperes = []){
+  const noms = [normaliserCatalogue(definition.name), ...reperes.map(normaliserCatalogue)].filter(Boolean);
+  return groupe.items.find(it => it.id === definition.id)
+    || groupe.items.find(it => noms.some(nom => texteArticleCatalogue(it).includes(nom)));
+}
+function assurerArticleCatalogue(groupe, definition, options = {}){
+  let item = trouverArticleCatalogue(groupe, definition, options.reperes || []);
+  if (!item){
+    item = JSON.parse(JSON.stringify(definition));
+    groupe.items.push(item);
+    return item;
+  }
+  if (!item.desc && definition.desc) item.desc = definition.desc;
+  if (!item.unit && definition.unit) item.unit = definition.unit;
+  if (!item.note && definition.note) item.note = definition.note;
+  if (!item.photoHidden && definition.photo && !item.photo) item.photo = definition.photo;
+  if (!item.photoHidden && definition.photoMode && !item.photoMode) item.photoMode = definition.photoMode;
+  if (options.forcePrice && typeof definition.price === "number") item.price = definition.price;
+  return item;
+}
+const VARIANTES_BOISSONS = {
+  smoothie: [
+    { id:"bv-smoothie-mangue-passion", name:"Smoothie Gaspard — mangue-passion", desc:"Smoothie frais mangue-passion — 250 ml", price:null, unit:"unité", note:"Tarif repris de la référence Smoothie de la fiche", photo:ASSETS_CATALOGUE.smoothieMangue, photoMode:"product" },
+    { id:"bv-smoothie-fraise-banane", name:"Smoothie Gaspard — fraise-banane", desc:"Smoothie frais fraise-banane — 250 ml", price:null, unit:"unité", note:"Tarif repris de la référence Smoothie de la fiche", photo:ASSETS_CATALOGUE.smoothieFraise, photoMode:"product" }
+  ],
+  skyr: [
+    { id:"bv-skyr-fruits-rouges", name:"Skyr à boire — fruits rouges", desc:"Boisson lactée riche en protéines, 0 % M.G. — 270 g", price:null, unit:"unité", note:"Tarif repris de la référence Skyr de la fiche", photo:ASSETS_CATALOGUE.skyrFruits, photoMode:"product" },
+    { id:"bv-skyr-vanille", name:"Skyr à boire — vanille", desc:"Boisson lactée riche en protéines, 0 % M.G. — 270 g", price:null, unit:"unité", note:"Tarif repris de la référence Skyr de la fiche", photo:ASSETS_CATALOGUE.skyrVanille, photoMode:"product" }
+  ]
+};
+const YUME_SUSHI_GROUPS = [
+  {
+    name:"Yume Sushi — Plateau Solo", indice:"plateau solo", gallery:[
+      { src:YUME_IMAGES.californiaSaumon, label:"California saumon avocat" },
+      { src:YUME_IMAGES.nigiriSaumon, label:"Nigiri saumon" },
+      { src:YUME_IMAGES.makiSaumon, label:"Maki saumon" },
+      { src:YUME_IMAGES.californiaThonCuit, label:"California thon cuit" }
+    ],
+    items:[
+      { id:"su-yume-solo-1", name:"Plateau Solo — Proposition 1 · 14 pièces", desc:"California saumon avocat ×8 · Nigiri saumon ×6", price:12.90, unit:"unité", photo:YUME_IMAGES.californiaSaumon, photoMode:"product" },
+      { id:"su-yume-solo-2", name:"Plateau Solo — Proposition 2 · 14 pièces", desc:"Maki saumon ×4 · California saumon avocat ×4 · California thon cuit ×4 · Nigiri saumon ×2", price:12.90, unit:"unité", photo:YUME_IMAGES.makiSaumon, photoMode:"product" },
+      { id:"su-yume-solo-3", name:"Plateau Solo — Proposition 3 · 14 pièces", desc:"California saumon ×8 · California thon cuit ×4 · Nigiri saumon ×2", price:12.90, unit:"unité", photo:YUME_IMAGES.californiaThonCuit, photoMode:"product" }
+    ]
+  },
+  {
+    name:"Yume Sushi — Plateau Duo", indice:"plateau duo", gallery:[
+      { src:YUME_IMAGES.nigiriSaumon, label:"Nigiri saumon" },
+      { src:YUME_IMAGES.nigiriCrevette, label:"Nigiri crevette" },
+      { src:YUME_IMAGES.californiaSaumon, label:"California saumon avocat" },
+      { src:YUME_IMAGES.springAvocatCreamCheese, label:"Spring roll avocat & cream cheese" },
+      { src:YUME_IMAGES.makiThonCuit, label:"Maki thon cuit" }
+    ],
+    items:[
+      { id:"su-yume-duo-1", name:"Plateau Duo — Proposition 1 · 32 pièces", desc:"Nigiri saumon ×4 · Nigiri crevette ×4 · California saumon avocat ×8 · Spring roll avocat cream cheese ×8 · Maki thon cuit ×8", price:32.00, unit:"unité", photo:YUME_IMAGES.springAvocatCreamCheese, photoMode:"product" }
+    ]
+  }
+];
+const VISUELS_PAR_NOM = [
+  { termes:["st yorre"], photo:ASSETS_CATALOGUE.stYorre },
+  { termes:["coca", "zero"], photo:ASSETS_CATALOGUE.cocaZero },
+  { termes:["coca", "classique"], photo:ASSETS_CATALOGUE.cocaClassique },
+  { termes:["heineken"], photo:ASSETS_CATALOGUE.heineken },
+  { termes:["budweiser"], photo:ASSETS_CATALOGUE.budweiser },
+  { termes:["smoothie", "mangue", "passion"], photo:ASSETS_CATALOGUE.smoothieMangue },
+  { termes:["smoothie", "fraise", "banane"], photo:ASSETS_CATALOGUE.smoothieFraise },
+  { termes:["skyr", "fruits rouges"], photo:ASSETS_CATALOGUE.skyrFruits },
+  { termes:["skyr", "vanille"], photo:ASSETS_CATALOGUE.skyrVanille },
+  { termes:["pom potes"], photo:ASSETS_CATALOGUE.pomPotes },
+  { termes:["pompotes"], photo:ASSETS_CATALOGUE.pomPotes },
+  { termes:["salade", "fruits"], photo:ASSETS_CATALOGUE.saladeFruits },
+  { termes:["sac", "kraft"], photo:ASSETS_CATALOGUE.sacKraft },
+  { termes:["kit", "couvert"], photo:ASSETS_CATALOGUE.couvertsKraft }
+];
+function appliquerVisuelCatalogue(item){
+  if (!item || item.photoHidden) return;
+  const texte = texteArticleCatalogue(item);
+  const ref = VISUELS_PAR_NOM.find(candidate => candidate.termes.every(terme => texte.includes(terme)));
+  if (!ref) return;
+  if (!item.photo) item.photo = ref.photo;
+  if (!item.photoMode) item.photoMode = "product";
+}
+function assurerVariantesBoissons(groupe, toutesLesBoissons, cle){
+  const candidates = toutesLesBoissons.filter(item => texteArticleCatalogue(item).includes(cle));
+  const reference = candidates.find(item => typeof item.price === "number");
+  VARIANTES_BOISSONS[cle].forEach(definition => {
+    const repere = cle === "smoothie"
+      ? (definition.id.includes("mangue") ? "mangue passion" : "fraise banane")
+      : (definition.id.includes("fruits") ? "fruits rouges" : "vanille");
+    const item = assurerArticleCatalogue(groupe, definition, { reperes:[repere] });
+    if (reference){
+      item.price = reference.price;
+      if (reference.unit) item.unit = reference.unit;
+    }
+    if (!item.photoHidden){ item.photo = item.photo || definition.photo; item.photoMode = item.photoMode || "product"; }
+  });
+}
+function assurerPlateauxYume(){
+  const sushi = CATALOG.sushi;
+  if (!sushi) return;
+  YUME_SUSHI_GROUPS.forEach(definition => {
+    const groupe = trouverGroupeCatalogue(sushi, definition.name, definition.indice);
+    if (!groupe.logo) groupe.logo = "yume";
+    groupe.openByDefault = true;
+    if (!Array.isArray(groupe.photoGallery) || !groupe.photoGallery.length){
+      groupe.photoGallery = JSON.parse(JSON.stringify(definition.gallery));
+    }
+    definition.items.forEach(item => {
+      assurerArticleCatalogue(groupe, item, { reperes:[normaliserCatalogue(item.name)], forcePrice:true });
+    });
+  });
+}
+function reparerCatalogueProduits(){
+  const boissons = CATALOG.boissons;
+  const materiel = CATALOG.materiel;
+  assurerPlateauxYume();
+  if (!boissons || !materiel) return;
+  const groupeBoissons = trouverGroupeCatalogue(boissons, "Boissons individuelles", "boisson");
+  groupeBoissons.openByDefault = true;
+  [
+    { id:"bv-heineken", name:"Bière Heineken", desc:"Bière blonde", price:2.20, unit:"unité", note:"À consommer avec modération", halal:false, photo:ASSETS_CATALOGUE.heineken, photoMode:"product" },
+    { id:"bv-budweiser", name:"Bière Budweiser", desc:"Bière blonde", price:2.20, unit:"unité", note:"À consommer avec modération", halal:false, photo:ASSETS_CATALOGUE.budweiser, photoMode:"product" }
+  ].forEach(definition => assurerArticleCatalogue(groupeBoissons, definition, { reperes:[definition.id === "bv-heineken" ? "heineken" : "budweiser"], forcePrice:true }));
+
+  const toutesLesBoissons = (boissons.groups || []).flatMap(g => g.items || []);
+  assurerVariantesBoissons(groupeBoissons, toutesLesBoissons, "smoothie");
+  assurerVariantesBoissons(groupeBoissons, toutesLesBoissons, "skyr");
+
+  const groupeUsage = trouverGroupeCatalogue(materiel, "Usage unique", "usage unique");
+  groupeUsage.openByDefault = true;
+  [
+    { id:"mt-sac-kraft", name:"Sac kraft marron", desc:"Sac papier kraft avec poignées", price:0.42, unit:"unité", photo:ASSETS_CATALOGUE.sacKraft, photoMode:"product" },
+    { id:"mt-kit-couverts-kraft", name:"Kit couverts kraft", desc:"Kit à usage unique : couverts en bois, serviette et pochette kraft", price:0.88, unit:"unité", photo:ASSETS_CATALOGUE.couvertsKraft, photoMode:"product" }
+  ].forEach(definition => assurerArticleCatalogue(groupeUsage, definition, { reperes:[definition.id === "mt-sac-kraft" ? "sac kraft" : "kit couvert"], forcePrice:true }));
+
+  const fruits = (CATALOG.matchMenu.groups || []).flatMap(g => g.items || []).find(item => item.id === "mm-fruits" || /salade.*fruit/.test(texteArticleCatalogue(item)));
+  if (fruits){
+    fruits.desc = "Base mangue & ananas, topping framboise — contenant inclus";
+    if (!fruits.photoHidden){ fruits.photo = fruits.photo || ASSETS_CATALOGUE.saladeFruits; fruits.photoMode = fruits.photoMode || "product"; }
+  }
+  Object.values(CATALOG).forEach(section => (section.groups || []).forEach(groupe => (groupe.items || []).forEach(appliquerVisuelCatalogue)));
+}
+
 CATALOG.matchMenu.label = "Menu du match — " + MATCH.opponent;
+reparerCatalogueProduits();
 
 /* Alimentation électrique — mention à faire remonter au stade */
 const POWER_NOTE = "Prévoir une alimentation électrique adaptée et dédiée à proximité de chaque étuve, avec un accès sécurisé au point de livraison.";
@@ -2552,13 +2810,15 @@ const DEVIS_BLOCS = [
   { key:"snacking", label:"02 · Snacking salé & finger food" },
   { key:"desserts", label:"03 · Desserts & produits individuels" },
   { key:"boissons", label:"04 · Boissons" },
-  { key:"location", label:"05 · Location & matériel" }
+  { key:"usage", label:"05 · Usage unique" },
+  { key:"location", label:"06 · Location & matériel" }
 ];
 
 function blocDevisPourLigne(line){
   const section = String(line.sectionKey || "").toLowerCase();
   const groupe = String(line.groupName || "").toLowerCase();
   const nom = String(line.name || "").toLowerCase();
+  if (section === "materiel" && /usage unique|sac kraft|kit couverts|couvert kraft/.test(groupe + " " + nom)) return "usage";
   if (section === "materiel") return "location";
   if (section === "boissons") return "boissons";
   if (/dessert|yaourt|compote|skyr|fruit|cake|brownie|mousse|tarte/.test(groupe + " " + nom)) return "desserts";
@@ -2936,6 +3196,7 @@ function appliquerConfig(cfg){
   if (!CATALOG.matchMenu.label || /^Menu du match(?:\s—.*)?$/.test(CATALOG.matchMenu.label)) {
     CATALOG.matchMenu.label = "Menu du match — " + MATCH.opponent;
   }
+  reparerCatalogueProduits();
   if (Object.prototype.hasOwnProperty.call(cfg, "crest")) window.__crestDataUrl = cfg.crest || "";
   if (Object.prototype.hasOwnProperty.call(cfg, "brandLogo")) window.__brandLogoDataUrl = cfg.brandLogo || "";
   recalculerEcheance();
@@ -2977,7 +3238,7 @@ function appliquerLogosCourants(){
 /* Snapshot de l'état courant, pour export ou génération de page */
 function configCourante(){
   return {
-    version: 3,
+    version: 5,
     genereLe: new Date().toISOString(),
     match: {
       competition: MATCH.competition, journee: MATCH.journee, opponent: MATCH.opponent,
@@ -3259,6 +3520,37 @@ function panneauMatch(p){
 /* ---------- 2. MENU ---------- */
 function nouvelId(prefix = "article"){ return prefix + "-" + Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
 
+function optimiserVisuelFichier(file, maxSide = 1440){
+  return new Promise((resolve, reject) => {
+    if (!file || !String(file.type || "").startsWith("image/")){
+      reject(new Error("Choisissez une image valide."));
+      return;
+    }
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      const largeur = image.naturalWidth || image.width;
+      const hauteur = image.naturalHeight || image.height;
+      const ratio = Math.min(1, maxSide / Math.max(largeur, hauteur));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.max(1, Math.round(largeur * ratio));
+      canvas.height = Math.max(1, Math.round(hauteur * ratio));
+      const contexte = canvas.getContext("2d");
+      contexte.drawImage(image, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob(blob => {
+        URL.revokeObjectURL(url);
+        if (!blob){ reject(new Error("La compression de l’image a échoué.")); return; }
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error("La lecture de l’image a échoué."));
+        reader.readAsDataURL(blob);
+      }, "image/webp", .84);
+    };
+    image.onerror = () => { URL.revokeObjectURL(url); reject(new Error("Cette image ne peut pas être lue.")); };
+    image.src = url;
+  });
+}
+
 function panneauMenu(p, mode = "recettes"){
   const estMateriel = mode === "materiel";
   const sectionKeys = estMateriel ? ["materiel"] : ["matchMenu","boissons"];
@@ -3267,6 +3559,35 @@ function panneauMenu(p, mode = "recettes"){
   const libelleBloc = estMateriel ? "bloc de matériel" : "bloc de recettes";
   const exempleBloc = estMateriel ? "Ex. Maintien en température" : "Ex. Finger food";
   const nomArticle = estMateriel ? "Nouveau matériel" : "Nouvelle recette";
+  const renduVisuelGroupe = (sec, g, gi) => {
+    if (sec.key !== "matchMenu") return "";
+    const snacking = estGroupeSnacking(g);
+    const titre = g.coverTitle || (snacking ? "Affiche du snacking salé" : "Visuel de la prestation");
+    const aide = snacking
+      ? "Ajoutez l’affiche créée pour ce match. Elle sera visible en tête de cette prestation dans le bon de commande."
+      : "Ajoutez un visuel panoramique facultatif pour présenter cette prestation dans le bon de commande.";
+    return `<div class="adm-visuel">
+      <div class="adm-visuel-copy"><b>${esc(titre)}</b><span>${esc(aide)}</span></div>
+      <div class="adm-photo-actions">
+        <label class="adm-photo-label"><input type="file" accept="image/*" data-cover-upload="${sec.key}:${gi}">${g.coverPhoto ? "Remplacer l’affiche" : "Importer l’affiche"}</label>
+        ${g.coverPhoto ? `<button type="button" class="bt bt-vide" data-remove-cover="${sec.key}:${gi}">Retirer</button>` : ""}
+      </div>
+      ${g.coverPhoto ? `<img class="adm-visuel-preview" src="${esc(g.coverPhoto)}" alt="${esc(titre)}">` : ""}
+    </div>`;
+  };
+  const renduVisuelArticle = (sec, g, gi, it, ii) => {
+    const libelle = it.photo ? "Photo produit active" : "Photo produit facultative";
+    return `<div class="adm-item-visuel">
+      <div class="adm-item-visuel-info">
+        ${it.photo ? `<img src="${esc(it.photo)}" alt="">` : ""}
+        <span>${libelle}</span>
+      </div>
+      <div class="adm-photo-actions">
+        <label class="adm-photo-label"><input type="file" accept="image/*" data-item-upload="${sec.key}:${gi}:${ii}">${it.photo ? "Remplacer" : "Ajouter une photo"}</label>
+        ${it.photo ? `<button type="button" class="bt bt-vide" data-remove-item-photo="${sec.key}:${gi}:${ii}">Retirer</button>` : ""}
+      </div>
+    </div>`;
+  };
 
   p.innerHTML = `
     <p class="adm-aide">${estMateriel
@@ -3284,6 +3605,7 @@ function panneauMenu(p, mode = "recettes"){
             <input class="adm-grp-nom" data-s="${sec.key}" data-g="${gi}" value="${ech(g.name)}" aria-label="Nom du bloc">
             <button class="adm-x" data-suppr-g="${sec.key}:${gi}" title="Supprimer le bloc">Supprimer le bloc</button>
           </div>
+          ${renduVisuelGroupe(sec, g, gi)}
           ${g.items.map((it,ii) => `
             <div class="adm-item">
               <div class="adm-item-l1">
@@ -3294,6 +3616,7 @@ function panneauMenu(p, mode = "recettes"){
               </div>
               <input data-s="${sec.key}" data-g="${gi}" data-i="${ii}" data-f="desc" value="${ech(it.desc)}" placeholder="${estMateriel ? "Description obligatoire" : "Composition obligatoire"}" aria-label="${estMateriel ? "Description du matériel" : "Composition de la recette"}">
               ${estMateriel ? "" : `<label class="adm-check"><input type="checkbox" data-s="${sec.key}" data-g="${gi}" data-i="${ii}" data-f="meatFree" ${it.meatFree ? "checked" : ""}>Sans viande</label>`}
+              ${renduVisuelArticle(sec, g, gi, it, ii)}
             </div>`).join("")}
           <button class="adm-ajout" data-ajout-i="${sec.key}:${gi}">+ Ajouter ${estMateriel ? "un matériel" : "une recette / un produit"}</button>
         </div>`).join("")}
@@ -3390,8 +3713,84 @@ function panneauMenu(p, mode = "recettes"){
     rendreAdmin();
   }));
 
-  const enregistrerSaisieEnMemoire = () => {
+  const enregistrerVisuel = async (input, type) => {
+    const fichier = input.files && input.files[0];
+    if (!fichier) return;
+    input.disabled = true;
+    try {
+      appliquerChamps(false);
+      const chemin = (type === "cover" ? input.dataset.coverUpload : input.dataset.itemUpload).split(":");
+      const [s, gi, ii] = chemin;
+      const groupe = CATALOG[s] && CATALOG[s].groups[+gi];
+      const article = groupe && ii !== undefined ? groupe.items[+ii] : null;
+      if (!groupe || (type === "item" && !article)) throw new Error("La cible du visuel est introuvable.");
+      const visuel = await optimiserVisuelFichier(fichier);
+      if (type === "cover"){
+        groupe.coverPhoto = visuel;
+        groupe.posterSlot = true;
+        groupe.coverTitle = estGroupeSnacking(groupe) ? "Affiche du snacking salé" : "Visuel de la prestation";
+      } else {
+        article.photo = visuel;
+        article.photoMode = "product";
+        delete article.photoHidden;
+      }
+      reconstruireIndex();
+      sauvegarderConfigurationDistanteSilencieuse();
+      rendreAdmin();
+      notifier(type === "cover" ? "Affiche enregistrée" : "Photo produit enregistrée");
+    } catch (erreur){
+      notifier(erreur && erreur.message ? erreur.message : "Impossible d’enregistrer ce visuel.");
+      input.disabled = false;
+    }
+  };
+  p.querySelectorAll("[data-cover-upload]").forEach(input => input.addEventListener("change", () => enregistrerVisuel(input, "cover")));
+  p.querySelectorAll("[data-item-upload]").forEach(input => input.addEventListener("change", () => enregistrerVisuel(input, "item")));
+  p.querySelectorAll("[data-remove-cover]").forEach(b => b.addEventListener("click", () => {
     appliquerChamps(false);
+    const [s, gi] = b.dataset.removeCover.split(":");
+    const groupe = CATALOG[s] && CATALOG[s].groups[+gi];
+    if (!groupe) return;
+    delete groupe.coverPhoto;
+    groupe.posterSlot = true;
+    reconstruireIndex();
+    sauvegarderConfigurationDistanteSilencieuse();
+    rendreAdmin();
+    notifier("Affiche retirée");
+  }));
+  p.querySelectorAll("[data-remove-item-photo]").forEach(b => b.addEventListener("click", () => {
+    appliquerChamps(false);
+    const [s, gi, ii] = b.dataset.removeItemPhoto.split(":");
+    const article = CATALOG[s] && CATALOG[s].groups[+gi] && CATALOG[s].groups[+gi].items[+ii];
+    if (!article) return;
+    delete article.photo;
+    delete article.photoMode;
+    article.photoHidden = true;
+    reconstruireIndex();
+    sauvegarderConfigurationDistanteSilencieuse();
+    rendreAdmin();
+    notifier("Photo produit retirée");
+  }));
+
+  const propagerTarifBoisson = champ => {
+    if (!champ || champ.dataset.f !== "price" || champ.dataset.s !== "boissons") return;
+    const groupe = CATALOG.boissons.groups[+champ.dataset.g];
+    const article = groupe && groupe.items[+champ.dataset.i];
+    if (!article) return;
+    const texte = texteArticleCatalogue(article);
+    const famille = texte.includes("smoothie") ? "smoothie" : (texte.includes("skyr") ? "skyr" : "");
+    if (!famille) return;
+    const tarif = article.price;
+    const associes = CATALOG.boissons.groups.flatMap(g => g.items || []).filter(item => texteArticleCatalogue(item).includes(famille));
+    associes.forEach(item => { item.price = tarif; });
+    p.querySelectorAll('[data-s="boissons"][data-f="price"]').forEach(input => {
+      const item = CATALOG.boissons.groups[+input.dataset.g] && CATALOG.boissons.groups[+input.dataset.g].items[+input.dataset.i];
+      if (item && texteArticleCatalogue(item).includes(famille)) input.value = tarif === null || tarif === undefined ? "" : tarif;
+    });
+  };
+
+  const enregistrerSaisieEnMemoire = evenement => {
+    appliquerChamps(false);
+    propagerTarifBoisson(evenement && evenement.target);
     reconstruireIndex();
     majEtatAdmin("Modifications en attente d’enregistrement…", true);
     sauvegarderConfigurationDistanteSilencieuse();
@@ -4588,7 +4987,7 @@ async function activerNotificationsAdmin(){
     if (permission !== "granted") throw new Error("Notifications refusées. Autorisez-les dans les réglages du téléphone.");
     const status = await stcApi("admin_notification_status", { token:STC_REMOTE.adminToken });
     if (!status.vapid_public_key) throw new Error("La clé de notification n’est pas configurée.");
-    const registration = await navigator.serviceWorker.register("./sw.js?v=39", { scope:"./", updateViaCache:"none" });
+    const registration = await navigator.serviceWorker.register("./sw.js?v=40", { scope:"./", updateViaCache:"none" });
     await navigator.serviceWorker.ready;
     let subscription = await registration.pushManager.getSubscription();
     if (!subscription) subscription = await registration.pushManager.subscribe({ userVisibleOnly:true, applicationServerKey:urlBase64EnOctets(status.vapid_public_key) });
@@ -5150,11 +5549,12 @@ function ligneHTML(it, n){
 }
 function carteHTML(it){
   const n = nb(it.id), et = [], nom = trText(it.name), desc = trText(it.desc);
+  const classePhoto = it.photoMode === "product" ? "ca-photo ca-photo-produit" : "ca-photo";
   if (it.meatFree) et.push(`<span class="pastille p-vege">${t("pastille_sans_viande")}</span>`);
   if (it.halal === false) et.push(`<span class="pastille p-nonhalal">${t("pastille_non_halal")}</span>`);
   if (it.price === 0) et.push(`<span class="pastille p-inclus">${t("lbl_inclus")}</span>`);
   return `<div class="carte ${n>0?"prise":""}" id="c-${it.id}">
-    ${it.photo ? `<img class="ca-photo" src="${esc(it.photo)}" alt="${esc(nom)}" loading="lazy" decoding="async">` : ""}
+    ${it.photo ? `<img class="${classePhoto}" src="${esc(it.photo)}" alt="${esc(nom)}" loading="lazy" decoding="async">` : ""}
     <div class="ca-nom">${esc(nom)}</div>
     ${et.length ? `<div class="ca-etiqs">${et.join("")}</div>` : ""}
     <div class="ca-desc ca-composition"><b>${t("lbl_composition")}</b><br>${esc(desc || t("lbl_composition_a_preciser"))}</div>
@@ -5178,17 +5578,35 @@ const LOGOS_PARTENAIRES = {
   get cavalieri(){ return LOGO_CAVALIERI; }
 };
 const FAMILLES = {};
+function estGroupeSnacking(groupe){
+  return /snack|finger|sandwich|burger|wrap|tender|bao|pizza/.test(normaliserCatalogue(groupe && groupe.name));
+}
+function afficheFamilleHTML(groupe, cle){
+  const estSnacking = cle === "match" && (groupe.posterSlot || estGroupeSnacking(groupe));
+  if (!groupe.coverPhoto && !estSnacking) return "";
+  const titre = groupe.coverTitle || (estSnacking ? "Affiche du snacking salé" : "Visuel de la prestation");
+  if (groupe.coverPhoto){
+    return `<figure class="fam-affiche"><img src="${esc(groupe.coverPhoto)}" alt="${esc(titre)}" loading="lazy" decoding="async"><figcaption><b>${esc(titre)}</b><span>Visuel de la prestation</span></figcaption></figure>`;
+  }
+  return `<div class="fam-affiche fam-affiche-vide"><div><b>${esc(titre)}</b><span>Affiche à intégrer depuis l’espace administrateur pour cette prestation.</span></div></div>`;
+}
+function galerieFamilleHTML(groupe){
+  if (!Array.isArray(groupe.photoGallery) || !groupe.photoGallery.length) return "";
+  return `<div class="fam-galerie" aria-label="Photos des pièces proposées">${groupe.photoGallery.map(photo => `
+    <figure class="fam-mini-visuel"><img src="${esc(photo.src)}" alt="${esc(photo.label || "Pièce proposée")}" loading="lazy" decoding="async"><figcaption>${esc(photo.label || "Pièce proposée")}</figcaption></figure>`).join("")}</div>`;
+}
 const famillesHTML = (gs, cle) => gs.map((g, i) => {
   const gid = `${cle}-${i}`;
   FAMILLES[gid] = g.items.map(it => it.id);
   const logo = g.logo && LOGOS_PARTENAIRES[g.logo];
-  return `<button type="button" class="famille-tog" data-fam="${gid}" aria-expanded="false" aria-controls="fam-${gid}">
+  const ouvert = Boolean(g.openByDefault);
+  return `<button type="button" class="famille-tog" data-fam="${gid}" aria-expanded="${ouvert ? "true" : "false"}" aria-controls="fam-${gid}">
       ${logo ? `<img class="fam-logo" src="${logo}" alt="${esc(g.name)}">` : ""}
       <span class="fam-nom">${esc(g.name)}</span>
       <span class="fam-cpt" id="cpt-${gid}"></span>
       <span class="fam-ch" aria-hidden="true"></span>
     </button>
-    <div class="cartes" id="fam-${gid}" hidden>${g.items.map(carteHTML).join("")}</div>`;
+    <div class="cartes" id="fam-${gid}" ${ouvert ? "" : "hidden"}>${afficheFamilleHTML(g, cle)}${galerieFamilleHTML(g)}${g.items.map(carteHTML).join("")}</div>`;
 }).join("");
 
 function majFamilles(){
@@ -5716,7 +6134,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   rendreBandeau(); rendreCatalogue(); rendreMAD(); rendrePanier();
   initOnglets(); initTiroir();
   if ("serviceWorker" in navigator){
-    navigator.serviceWorker.register("./sw.js?v=39", { scope:"./", updateViaCache:"none" }).then(reg => reg.update()).catch(() => {});
+    navigator.serviceWorker.register("./sw.js?v=40", { scope:"./", updateViaCache:"none" }).then(reg => reg.update()).catch(() => {});
   }
   await initialiserModeDistant();
 });
