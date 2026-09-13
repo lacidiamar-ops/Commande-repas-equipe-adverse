@@ -231,17 +231,17 @@ h1,h2,h3,h4{ margin:0; font-family:var(--f-titre); color:var(--encre); letter-sp
   aspect-ratio:1/1; object-fit:contain; padding:14px; box-sizing:border-box;
   background:#F8F7F3;
 }
-.ca-photo.ca-photo-food{ aspect-ratio:16/10; object-fit:cover; object-position:center; padding:0; }
+.ca-photo.ca-photo-food{ aspect-ratio:4/3; object-fit:cover; object-position:center; padding:0; }
 .fam-affiche{
   grid-column:1 / -1; margin:0; overflow:hidden; border:1px solid var(--trait); border-radius:var(--r-m);
-  background:var(--blanc); box-shadow:0 10px 24px rgba(22,33,42,.05);
+  background:linear-gradient(145deg,#F7F4EC,#FFF); box-shadow:0 10px 24px rgba(22,33,42,.05); padding:18px 18px 0;
 }
-.fam-affiche img{ display:block; width:100%; aspect-ratio:16/6; object-fit:cover; background:#F3F1EC; }
+.fam-affiche img{ display:block; width:min(100%,520px); aspect-ratio:210/297; object-fit:contain; margin:0 auto; background:#F3F1EC; border:1px solid var(--trait); border-radius:10px; box-shadow:0 14px 30px rgba(22,33,42,.12); }
 .fam-affiche figcaption{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:12px 15px; }
 .fam-affiche figcaption b{ font-family:var(--f-chiffre); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--encre); }
 .fam-affiche figcaption span{ font-size:11.5px; color:var(--gris); }
-.fam-affiche-vide{ min-height:132px; display:flex; align-items:center; justify-content:center; padding:18px; border-style:dashed; background:linear-gradient(135deg,#FBFAF6,#F3F0E8); }
-.fam-affiche-vide > div{ max-width:470px; text-align:center; }
+.fam-affiche-vide{ display:flex; align-items:center; justify-content:center; padding:20px; border-style:dashed; background:linear-gradient(135deg,#FBFAF6,#F3F0E8); }
+.fam-affiche-vide > div{ width:min(100%,520px); aspect-ratio:210/297; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px; border:1px dashed var(--trait-2); border-radius:10px; background:rgba(255,255,255,.76); text-align:center; }
 .fam-affiche-vide b{ display:block; font-family:var(--f-chiffre); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--encre); }
 .fam-affiche-vide span{ display:block; margin-top:7px; color:var(--gris); font-size:12px; line-height:1.5; }
 .fam-galerie{ grid-column:1 / -1; display:grid; grid-template-columns:repeat(auto-fit,minmax(142px,1fr)); gap:10px; }
@@ -262,6 +262,13 @@ h1,h2,h3,h4{ margin:0; font-family:var(--f-titre); color:var(--encre); letter-sp
 .carte:hover{ border-color:var(--trait-2); box-shadow:var(--ombre); transform:translateY(-2px); }
 .carte:hover .ca-photo.ca-photo-food{ transform:scale(1.012); }
 .carte.prise{ border-color:var(--safran); box-shadow:inset 3px 0 0 var(--safran); }
+.ca-variantes{ display:grid; gap:9px; margin-top:2px; }
+.ca-variante{ display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:10px; padding:10px 0; border-top:1px solid var(--trait); }
+.ca-variante:first-child{ border-top:0; }
+.ca-variante-nom{ font-size:12px; font-weight:700; line-height:1.35; }
+.ca-variante-prix{ margin-top:3px; color:var(--gris); font-family:var(--f-chiffre); font-size:11px; }
+.ca-variante .ca-ligne{ grid-column:1 / -1; margin:0; }
+.ca-variante .ca-comment{ grid-column:1 / -1; }
 
 .ca-nom{ font-family:var(--f-titre); font-size:16.5px; font-weight:700; line-height:1.3; }
 .ca-etiqs{ display:flex; gap:6px; flex-wrap:wrap; }
@@ -948,11 +955,17 @@ table.dt .sub{ font-size:11px; color:var(--gris-clair); margin-top:2px; }
 .adm-visuel{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:center; margin:0 0 12px; padding:12px; border:1px dashed var(--trait-2); border-radius:var(--r-s); background:rgba(255,255,255,.6); }
 .adm-visuel-copy b{ display:block; color:var(--encre); font-size:12px; }
 .adm-visuel-copy span{ display:block; margin-top:3px; color:var(--gris); font-size:11.5px; line-height:1.45; }
-.adm-visuel-preview{ grid-column:1 / -1; display:block; width:100%; max-height:188px; object-fit:cover; border:1px solid var(--trait); border-radius:7px; background:var(--blanc); }
+.adm-visuel-preview{ grid-column:1 / -1; display:block; width:min(100%,320px); aspect-ratio:210/297; margin:0 auto; object-fit:contain; border:1px solid var(--trait); border-radius:7px; background:var(--blanc); box-shadow:0 10px 24px rgba(22,33,42,.1); }
 .adm-photo-actions{ display:flex; align-items:center; justify-content:flex-end; gap:8px; flex-wrap:wrap; }
 .adm-photo-label{ display:inline-flex; align-items:center; justify-content:center; min-height:32px; padding:7px 10px; border:1px solid var(--encre); border-radius:var(--r-s); background:var(--encre); color:var(--blanc); font-size:11px; font-weight:700; cursor:pointer; }
 .adm-photo-label:hover{ background:var(--encre-2); }
 .adm-photo-label input{ position:absolute; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none; }
+.adm-lang-editor{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin:14px 0 18px; padding:13px 15px; border:1px solid var(--trait); border-radius:var(--r-m); background:#F8F7F3; }
+.adm-lang-editor b{ display:block; font-size:12px; color:var(--encre); }
+.adm-lang-editor span{ display:block; margin-top:3px; font-size:11px; color:var(--gris); }
+.adm-lang-buttons{ display:flex; gap:5px; flex-wrap:wrap; }
+.adm-lang-buttons button{ min-width:40px; min-height:34px; border:1px solid var(--trait-2); border-radius:8px; background:var(--blanc); color:var(--encre); font-size:11px; font-weight:800; cursor:pointer; }
+.adm-lang-buttons button.actif{ border-color:var(--safran); background:var(--safran); color:#1C2832; }
 .adm-item-visuel{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:2px; }
 .adm-item-visuel-info{ display:flex; align-items:center; gap:8px; min-width:0; color:var(--gris); font-size:11.5px; }
 .adm-item-visuel-info img{ width:38px; height:38px; flex:none; object-fit:contain; border:1px solid var(--trait); border-radius:6px; background:#F6F4EE; }
@@ -1043,7 +1056,7 @@ table.dt .sub{ font-size:11px; color:var(--gris-clair); margin-top:2px; }
 .demande-form{padding:24px 26px}.demande-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.demande-grid .large{grid-column:1/-1}.demande-form label{display:block;font-weight:800;font-size:.82rem;margin:0 0 6px}.demande-form input,.demande-form textarea,.demande-form select{width:100%;border:1px solid #cbd7e3;border-radius:10px;padding:12px;background:#fff;color:#10253e;font:inherit;box-sizing:border-box}.demande-form textarea{min-height:95px;resize:vertical}.demande-actions{display:flex;gap:12px;align-items:center;margin-top:20px;flex-wrap:wrap}.demande-result{margin-top:14px;padding:12px 14px;border-radius:10px;background:#eef7ff;color:#15436b;display:none}.demande-result.visible{display:block}.demande-honeypot{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
 .acces-demande{margin-top:14px;width:100%}.acces-demande-note{display:block;text-align:center;margin-top:8px;color:#5d6c7e;font-size:.78rem;line-height:1.4}
 .notif-config{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}.notif-card{border:1px solid #d7e1eb;border-radius:14px;padding:17px;background:#f8fbfe}.notif-card h4{margin:0 0 8px}.notif-card p{font-size:.84rem;line-height:1.5;color:#53677b}.notif-state{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:.74rem;font-weight:800;background:#e9eef3;color:#40566d}.notif-state.ok{background:#e4f5eb;color:#216b3f}
-.demande-admin-list{display:grid;gap:14px}.demande-admin-card{border:1px solid #d7e1eb;border-radius:15px;padding:17px;background:#fff}.demande-admin-card.pending{border-left:5px solid #d5a93e}.demande-admin-card.email_pending{border-left:5px solid #d06e25}.demande-admin-card.sent{border-left:5px solid #3b8658}.demande-admin-card.rejected{opacity:.72}.demande-admin-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.demande-admin-top h4{margin:0 0 5px;font-size:1rem}.demande-admin-meta{font-size:.82rem;line-height:1.55;color:#53677b}.demande-admin-message{margin:10px 0;padding:10px 12px;background:#f4f7fa;border-radius:9px;font-size:.84rem}.demande-admin-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.demande-admin-result{margin-top:12px;padding:12px;background:#edf7ff;border-radius:9px;font-size:.82rem;line-height:1.55;word-break:break-word}
+.demande-admin-list{display:grid;gap:14px}.demande-admin-card{border:1px solid #d7e1eb;border-radius:15px;padding:17px;background:#fff}.demande-admin-card.pending{border-left:5px solid #d5a93e}.demande-admin-card.email_pending{border-left:5px solid #d06e25}.demande-admin-card.sent{border-left:5px solid #3b8658}.demande-admin-card.rejected{opacity:.72}.demande-admin-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.demande-admin-top h4{margin:0 0 5px;font-size:1rem}.demande-admin-meta{font-size:.82rem;line-height:1.55;color:#53677b}.demande-admin-message{margin:10px 0;padding:10px 12px;background:#f4f7fa;border-radius:9px;font-size:.84rem}.demande-admin-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.demande-admin-result{margin-top:12px;padding:12px;background:#edf7ff;border-radius:9px;font-size:.82rem;line-height:1.55;word-break:break-word}.bt-danger{border-color:#B64040!important;color:#8F2929!important;background:#FFF7F7!important}.bt-danger:hover{background:#FDE8E8!important}
 @media(max-width:720px){.demande-grid,.notif-config{grid-template-columns:1fr}.demande-grid .large{grid-column:auto}.demande-dialog{border-radius:18px}.demande-head,.demande-form{padding:20px}.demande-admin-top{display:block}.demande-admin-top .notif-state{margin-top:8px}}
 </style>
 </head>
@@ -1530,6 +1543,68 @@ const CATALOG = {
   }
 };
 
+function preparerCatalogueReference(){
+  const pizzas = (CATALOG.pizzas.groups || []).flatMap(groupe => groupe.items || []);
+  const moitie = pizzas.find(item => item.id === "pz-moitie");
+  if (moitie) moitie.desc = {
+    fr:"Base tomate sur les deux moitiés — deux garnitures au choix, mozzarella et olives noires",
+    en:"Tomato base on both halves — two toppings of your choice, mozzarella and black olives",
+    es:"Base de tomate en ambas mitades — dos guarniciones a elegir, mozzarella y aceitunas negras",
+    it:"Base pomodoro su entrambe le metà — due farciture a scelta, mozzarella e olive nere"
+  };
+  const dimeco = pizzas.find(item => item.id === "pz-dimeco");
+  if (dimeco) dimeco.desc = {
+    fr:"Base tomate, mozzarella, pesto, tomates fraîches — après cuisson : bresaola",
+    en:"Tomato base, mozzarella, pesto, fresh tomatoes — after baking: bresaola",
+    es:"Base de tomate, mozzarella, pesto, tomate fresco — tras el horneado: bresaola",
+    it:"Base pomodoro, mozzarella, pesto, pomodoro fresco — dopo cottura: bresaola"
+  };
+  const groupeCasa = CATALOG.pizzas.groups[0];
+  const indexRoyale = groupeCasa ? (groupeCasa.items || []).findIndex(item => item.id === "pz-royale-bresaola") : -1;
+  if (indexRoyale >= 0){
+    const source = groupeCasa.items[indexRoyale];
+    const commun = {
+      cardGroup:"pz-royale-bresaola",
+      cardTitle:{ fr:"Royale bresaola", en:"Royale Bresaola", es:"Royale Bresaola", it:"Royale Bresaola" }
+    };
+    const tomate = Object.assign({}, source, commun, {
+      id:"pz-royale-bresaola-tomate",
+      name:{ fr:"Royale bresaola — base tomate", en:"Royale Bresaola — tomato base", es:"Royale Bresaola — base de tomate", it:"Royale Bresaola — base pomodoro" },
+      variantName:{ fr:"Base tomate", en:"Tomato base", es:"Base de tomate", it:"Base pomodoro" },
+      desc:{ fr:"Base tomate, mozzarella, champignons, bresaola, olives noires", en:"Tomato base, mozzarella, mushrooms, bresaola, black olives", es:"Base de tomate, mozzarella, champiñones, bresaola, aceitunas negras", it:"Base pomodoro, mozzarella, funghi, bresaola, olive nere" }
+    });
+    const blanche = Object.assign({}, source, commun, {
+      id:"pz-royale-bresaola-blanche",
+      name:{ fr:"Royale bresaola — base blanche", en:"Royale Bresaola — white base", es:"Royale Bresaola — base blanca", it:"Royale Bresaola — base bianca" },
+      variantName:{ fr:"Base blanche", en:"White base", es:"Base blanca", it:"Base bianca" },
+      desc:{ fr:"Base blanche, mozzarella, champignons, bresaola, olives noires", en:"White base, mozzarella, mushrooms, bresaola, black olives", es:"Base blanca, mozzarella, champiñones, bresaola, aceitunas negras", it:"Base bianca, mozzarella, funghi, bresaola, olive nere" }
+    });
+    groupeCasa.items.splice(indexRoyale, 1, tomate, blanche);
+  }
+  const sushiTraductions = {
+    "su-yume-california-saumon-avocat":["California saumon avocat","Salmon avocado California roll","California de salmón y aguacate","California salmone e avocado","California au saumon et avocat","California roll with salmon and avocado","California de salmón y aguacate","California con salmone e avocado"],
+    "su-yume-california-thon-cuit":["California thon cuit","Cooked tuna California roll","California de atún cocido","California tonno cotto","California au thon cuit","California roll with cooked tuna","California de atún cocido","California con tonno cotto"],
+    "su-yume-maki-saumon":["Maki saumon","Salmon maki","Maki de salmón","Maki al salmone","Maki au saumon","Maki with salmon","Maki de salmón","Maki con salmone"],
+    "su-yume-maki-thon-cuit":["Maki thon cuit","Cooked tuna maki","Maki de atún cocido","Maki al tonno cotto","Maki au thon cuit","Maki with cooked tuna","Maki de atún cocido","Maki con tonno cotto"],
+    "su-yume-nigiri-saumon":["Nigiri saumon","Salmon nigiri","Nigiri de salmón","Nigiri al salmone","Nigiri au saumon","Nigiri with salmon","Nigiri de salmón","Nigiri con salmone"],
+    "su-yume-nigiri-crevette":["Nigiri crevette","Prawn nigiri","Nigiri de gamba","Nigiri al gambero","Nigiri à la crevette","Nigiri with prawn","Nigiri de gamba","Nigiri con gambero"],
+    "su-yume-spring-avocat-cream-cheese":["Spring roll avocat & cream cheese","Avocado & cream cheese spring roll","Spring roll de aguacate y queso crema","Spring roll avocado e cream cheese","Spring roll avocat et cream cheese","Spring roll with avocado and cream cheese","Spring roll de aguacate y queso crema","Spring roll con avocado e cream cheese"]
+  };
+  const groupeSushi = CATALOG.sushi.groups[0];
+  if (groupeSushi){
+    groupeSushi.name = { fr:"Yume Sushi — à la pièce", en:"Yume Sushi — by the piece", es:"Yume Sushi — por pieza", it:"Yume Sushi — al pezzo" };
+    (groupeSushi.items || []).forEach(item => {
+      const v = sushiTraductions[item.id];
+      if (!v) return;
+      item.name = { fr:v[0], en:v[1], es:v[2], it:v[3] };
+      item.desc = { fr:v[4], en:v[5], es:v[6], it:v[7] };
+    });
+  }
+  const snacking = CATALOG.matchMenu.groups && CATALOG.matchMenu.groups[0];
+  if (snacking) snacking.posterSlot = true;
+}
+preparerCatalogueReference();
+
 /* Carte permanente de référence : sert à réparer les fiches enregistrées avant la carte Casa Di Meco */
 const PIZZAS_REF = JSON.parse(JSON.stringify(CATALOG.pizzas));
 const PHOTOS_REF = {};
@@ -1590,8 +1665,76 @@ function assurerArticleCatalogue(groupe, definition, options = {}){
   if (options.forcePrice && typeof definition.price === "number") item.price = definition.price;
   return item;
 }
+const tx = (fr,en,es,it) => ({ fr,en,es,it });
+function fusionnerTraduction(valeur, reference){
+  if (!reference) return valeur;
+  if (valeur && typeof valeur === "object" && !Array.isArray(valeur)) return Object.assign({}, reference, valeur);
+  if (String(valeur || "").trim()) return Object.assign({}, reference, { fr:String(valeur).trim() });
+  return Object.assign({}, reference);
+}
+function definirTraduction(valeur, langue, texte){
+  const prochaine = valeur && typeof valeur === "object" && !Array.isArray(valeur)
+    ? Object.assign({}, valeur)
+    : (String(valeur || "").trim() ? { fr:String(valeur).trim() } : {});
+  prochaine[langue] = texte;
+  return prochaine;
+}
+const TRADUCTIONS_ARTICLES = Object.freeze({
+  "mm-gc-boeuf":{ name:tx("Grilled Cheese — bœuf","Grilled Cheese — beef","Grilled Cheese — ternera","Grilled Cheese — manzo"), desc:tx("Mozzarella fumée, champignons, oignons, chou blanc, moutarde à l'ancienne, oignons crispy","Smoked mozzarella, mushrooms, onions, white cabbage, wholegrain mustard, crispy onions","Mozzarella ahumada, champiñones, cebolla, col blanca, mostaza antigua, cebolla crujiente","Mozzarella affumicata, funghi, cipolle, cavolo bianco, senape rustica, cipolle croccanti") },
+  "mm-gc-poulet":{ name:tx("Grilled Cheese — poulet","Grilled Cheese — chicken","Grilled Cheese — pollo","Grilled Cheese — pollo"), desc:tx("Mozzarella fumée, champignons, oignons, chou blanc, moutarde à l'ancienne, oignons crispy","Smoked mozzarella, mushrooms, onions, white cabbage, wholegrain mustard, crispy onions","Mozzarella ahumada, champiñones, cebolla, col blanca, mostaza antigua, cebolla crujiente","Mozzarella affumicata, funghi, cipolle, cavolo bianco, senape rustica, cipolle croccanti") },
+  "mm-carpaccio":{ name:tx("Carpaccio Verde","Green carpaccio","Carpaccio verde","Carpaccio verde"), desc:tx("Courgette crue râpée, feta, menthe, pignons, citron","Grated raw courgette, feta, mint, pine nuts, lemon","Calabacín crudo rallado, feta, menta, piñones, limón","Zucchina cruda grattugiata, feta, menta, pinoli, limone") },
+  "mm-salade":{ name:tx("Asian Chicken Vermicelli Bowl","Asian chicken vermicelli bowl","Bol asiático de fideos con pollo","Bowl asiatico di vermicelli con pollo"), desc:tx("Sésame, menthe, coriandre, cébette — poulet inclus","Sesame, mint, coriander, spring onion — chicken included","Sésamo, menta, cilantro, cebolleta — pollo incluido","Sesamo, menta, coriandolo, cipollotto — pollo incluso") },
+  "mm-pates-bolo":{ name:tx("Bolognaise de bœuf","Beef bolognese","Boloñesa de ternera","Bolognese di manzo"), desc:tx("Parmesan, basilic","Parmesan, basil","Parmesano, albahaca","Parmigiano, basilico") },
+  "mm-pates-pesto":{ name:tx("Pesto verde","Green pesto","Pesto verde","Pesto verde"), desc:tx("Parmesan, pignons, basilic — viande incluse","Parmesan, pine nuts, basil — meat included","Parmesano, piñones, albahaca — carne incluida","Parmigiano, pinoli, basilico — carne inclusa") },
+  "mm-pates-tomate":{ name:tx("Sauce tomate","Tomato sauce","Salsa de tomate","Salsa di pomodoro"), desc:tx("Mozzarella, parmesan, basilic — viande incluse","Mozzarella, parmesan, basil — meat included","Mozzarella, parmesano, albahaca — carne incluida","Mozzarella, parmigiano, basilico — carne inclusa") },
+  "mm-cheesecake":{ name:tx("Cheesecake mangue-passion","Mango-passion fruit cheesecake","Cheesecake de mango y maracuyá","Cheesecake mango e frutto della passione"), desc:tx("Recette réduite en sucre, crumble","Reduced-sugar recipe, crumble","Receta reducida en azúcar, crumble","Ricetta a ridotto contenuto di zucchero, crumble") },
+  "mm-fruits":{ name:tx("Salade de fruits frais","Fresh fruit salad","Ensalada de fruta fresca","Macedonia di frutta fresca"), desc:tx("Base mangue & ananas, topping framboise — contenant inclus","Mango and pineapple base, raspberry topping — container included","Base de mango y piña, topping de frambuesa — envase incluido","Base mango e ananas, topping al lampone — contenitore incluso") },
+  "bv-heineken":{ name:tx("Bière Heineken","Heineken beer","Cerveza Heineken","Birra Heineken"), desc:tx("Bière blonde","Lager beer","Cerveza rubia","Birra lager") },
+  "bv-budweiser":{ name:tx("Bière Budweiser","Budweiser beer","Cerveza Budweiser","Birra Budweiser"), desc:tx("Bière blonde","Lager beer","Cerveza rubia","Birra lager") },
+  "bv-coca-classique":{ name:tx("Coca-Cola classique","Coca-Cola Original","Coca-Cola original","Coca-Cola classica"), desc:tx("Boisson gazeuse Coca-Cola goût original","Coca-Cola Original soft drink","Refresco Coca-Cola sabor original","Bibita Coca-Cola gusto originale") },
+  "bv-coca-zero":{ name:tx("Coca-Cola Zero","Coca-Cola Zero Sugar","Coca-Cola Zero Azúcar","Coca-Cola Zero Zuccheri"), desc:tx("Boisson gazeuse sans sucres Coca-Cola Zero","Coca-Cola Zero Sugar soft drink","Refresco Coca-Cola Zero sin azúcar","Bibita Coca-Cola Zero senza zuccheri") },
+  "bv-st-yorre":{ name:tx("St-Yorre","St-Yorre","St-Yorre","St-Yorre"), desc:tx("Eau minérale naturelle gazeuse St-Yorre","St-Yorre sparkling natural mineral water","Agua mineral natural con gas St-Yorre","Acqua minerale naturale frizzante St-Yorre") },
+  "bv-san-pellegrino":{ name:tx("S.Pellegrino","S.Pellegrino","S.Pellegrino","S.Pellegrino"), desc:tx("Eau minérale naturelle pétillante — bouteille PET 50 cl","Sparkling natural mineral water — 50 cl PET bottle","Agua mineral natural con gas — botella PET de 50 cl","Acqua minerale naturale frizzante — bottiglia PET da 50 cl") },
+  "bv-plein-fruit-pomme-bio":{ name:tx("Plein Fruit Bio — jus de pomme","Plein Fruit Organic — apple juice","Plein Fruit Bio — zumo de manzana","Plein Fruit Bio — succo di mela"), desc:tx("Pur jus de pomme bio — format individuel","Organic pure apple juice — individual size","Zumo puro de manzana ecológico — formato individual","Succo puro di mela biologico — formato individuale") },
+  "bv-smoothie-mangue-passion":{ name:tx("Smoothie Gaspard — mangue-passion","Gaspard smoothie — mango-passion fruit","Smoothie Gaspard — mango-maracuyá","Smoothie Gaspard — mango-frutto della passione"), desc:tx("Smoothie frais mangue-passion — 250 ml","Fresh mango-passion fruit smoothie — 250 ml","Smoothie fresco de mango y maracuyá — 250 ml","Smoothie fresco mango e frutto della passione — 250 ml") },
+  "bv-smoothie-fraise-banane":{ name:tx("Smoothie Gaspard — fraise-banane","Gaspard smoothie — strawberry-banana","Smoothie Gaspard — fresa-plátano","Smoothie Gaspard — fragola-banana"), desc:tx("Smoothie frais fraise-banane — 250 ml","Fresh strawberry-banana smoothie — 250 ml","Smoothie fresco de fresa y plátano — 250 ml","Smoothie fresco fragola e banana — 250 ml") },
+  "bv-skyr-fruits-rouges":{ name:tx("Skyr à boire — fruits rouges","Drinkable Skyr — red berries","Skyr para beber — frutos rojos","Skyr da bere — frutti rossi"), desc:tx("Boisson lactée riche en protéines, 0 % M.G. — 270 g","High-protein dairy drink, 0% fat — 270 g","Bebida láctea rica en proteínas, 0 % M.G. — 270 g","Bevanda lattiero-casearia ricca di proteine, 0% grassi — 270 g") },
+  "bv-skyr-vanille":{ name:tx("Skyr à boire — vanille","Drinkable Skyr — vanilla","Skyr para beber — vainilla","Skyr da bere — vaniglia"), desc:tx("Boisson lactée riche en protéines, 0 % M.G. — 270 g","High-protein dairy drink, 0% fat — 270 g","Bebida láctea rica en proteínas, 0 % M.G. — 270 g","Bevanda lattiero-casearia ricca di proteine, 0% grassi — 270 g") },
+  "mt-etuve":{ name:tx("Étuve de maintien en température","Hot holding cabinet","Armario de mantenimiento en caliente","Armadio di mantenimento in temperatura"), desc:tx("Location pour la durée de l'événement","Rental for the duration of the event","Alquiler durante el evento","Noleggio per la durata dell'evento") },
+  "mt-sac-kraft":{ name:tx("Sac kraft marron","Brown kraft paper bag","Bolsa kraft marrón","Sacchetto kraft marrone"), desc:tx("Sac papier kraft avec poignées","Kraft paper bag with handles","Bolsa de papel kraft con asas","Sacchetto di carta kraft con manici") },
+  "mt-kit-couverts-kraft":{ name:tx("Kit couverts kraft","Kraft cutlery kit","Kit de cubiertos kraft","Kit posate kraft"), desc:tx("Kit à usage unique : couverts en bois, serviette et pochette kraft","Single-use kit: wooden cutlery, napkin and kraft sleeve","Kit de un solo uso: cubiertos de madera, servilleta y funda kraft","Kit monouso: posate in legno, tovagliolo e custodia kraft") }
+});
+const TRADUCTIONS_GROUPES = Object.freeze({
+  matchMenu:{ "sandwich chaud":tx("Snacking salé","Savoury snacks","Snacking salado","Snack salati"), "snacking sale":tx("Snacking salé","Savoury snacks","Snacking salado","Snack salati"), "entree":tx("Entrée","Starter","Entrante","Antipasto"), "salade":tx("Salade","Salad","Ensalada","Insalata"), "pates 400 g":tx("Pâtes — 400 g","Pasta — 400 g","Pasta — 400 g","Pasta — 400 g"), "desserts":tx("Desserts","Desserts","Postres","Dessert") },
+  materiel:{ "location":tx("Location","Rental","Alquiler","Noleggio"), "usage unique":tx("Usage unique","Single-use supplies","Desechables","Monouso") }
+});
+function appliquerTraductionsCatalogue(){
+  const labels = {
+    pizzas:tx("Pizzas","Pizzas","Pizzas","Pizze"), sushi:tx("Sushi","Sushi","Sushi","Sushi"),
+    boissons:tx("Boissons","Drinks","Bebidas","Bevande"), materiel:tx("Matériel logistique","Logistics equipment","Material logístico","Materiale logistico")
+  };
+  Object.entries(labels).forEach(([cle, traduction]) => { if (CATALOG[cle]) CATALOG[cle].label = fusionnerTraduction(CATALOG[cle].label, traduction); });
+  Object.entries(CATALOG).forEach(([sectionKey, section]) => (section.groups || []).forEach(groupe => {
+    const refGroupe = TRADUCTIONS_GROUPES[sectionKey] && TRADUCTIONS_GROUPES[sectionKey][normaliserCatalogue(groupe.name)];
+    if (refGroupe) groupe.name = fusionnerTraduction(groupe.name, refGroupe);
+    (groupe.items || []).forEach(item => {
+      const ref = TRADUCTIONS_ARTICLES[item.id];
+      if (!ref) return;
+      item.name = fusionnerTraduction(item.name, ref.name);
+      item.desc = fusionnerTraduction(item.desc, ref.desc);
+    });
+  }));
+}
+appliquerTraductionsCatalogue();
 const SUSHI_YUME_REF = JSON.parse(JSON.stringify(CATALOG.sushi.groups[0]));
-const BOISSONS_PAR_MARQUE_REF = JSON.parse(JSON.stringify(CATALOG.boissons.groups));
+const BOISSONS_ARTICLES_REF = Object.fromEntries(CATALOG.boissons.groups.flatMap(groupe => groupe.items || []).map(item => [item.id, JSON.parse(JSON.stringify(item))]));
+const BOISSONS_PAR_FAMILLE_REF = [
+  { name:tx("Bières","Beers","Cervezas","Birre"), items:[BOISSONS_ARTICLES_REF["bv-heineken"],BOISSONS_ARTICLES_REF["bv-budweiser"]] },
+  { name:tx("Boissons gazeuses · Coca-Cola","Soft drinks · Coca-Cola","Refrescos · Coca-Cola","Bibite gassate · Coca-Cola"), items:[BOISSONS_ARTICLES_REF["bv-coca-classique"],BOISSONS_ARTICLES_REF["bv-coca-zero"]] },
+  { name:tx("Eaux","Water","Aguas","Acque"), items:[BOISSONS_ARTICLES_REF["bv-st-yorre"],BOISSONS_ARTICLES_REF["bv-san-pellegrino"]] },
+  { name:tx("Jus & smoothies","Juices & smoothies","Zumos y smoothies","Succhi e smoothie"), items:[BOISSONS_ARTICLES_REF["bv-plein-fruit-pomme-bio"],BOISSONS_ARTICLES_REF["bv-smoothie-mangue-passion"],BOISSONS_ARTICLES_REF["bv-smoothie-fraise-banane"]] },
+  { name:tx("Yaourts à boire","Drinkable yoghurts","Yogures para beber","Yogurt da bere"), items:[BOISSONS_ARTICLES_REF["bv-skyr-fruits-rouges"],BOISSONS_ARTICLES_REF["bv-skyr-vanille"]] }
+];
 const PRIX_BOISSONS_FIXES = Object.freeze({ "bv-heineken":2.20, "bv-budweiser":2.20 });
 const REPERES_BOISSONS = Object.freeze({
   "bv-budweiser":["budweiser"],
@@ -1644,7 +1787,7 @@ function assurerSushiYumeALaPiece(){
   });
   sushi.groups = [JSON.parse(JSON.stringify(SUSHI_YUME_REF)), ...autres];
 }
-function organiserBoissonsParMarque(){
+function organiserBoissonsParFamille(){
   const boissons = CATALOG.boissons;
   if (!boissons) return;
   const existants = (boissons.groups || []).flatMap(groupe => groupe.items || []);
@@ -1661,15 +1804,18 @@ function organiserBoissonsParMarque(){
     if (index >= 0) utilises.add(index);
     return index >= 0 ? existants[index] : null;
   };
-  const groupes = BOISSONS_PAR_MARQUE_REF.map(referenceGroupe => ({
+  const groupes = BOISSONS_PAR_FAMILLE_REF.map(referenceGroupe => ({
     name:referenceGroupe.name,
     openByDefault:true,
-    items:(referenceGroupe.items || []).map(reference => {
+    items:(referenceGroupe.items || []).filter(Boolean).map(reference => {
       const ancien = trouverExistant(reference);
       const item = JSON.parse(JSON.stringify(reference));
       if (ancien){
         if (typeof ancien.price === "number") item.price = ancien.price;
         if (ancien.unit) item.unit = ancien.unit;
+        if (ancien.name) item.name = fusionnerTraduction(ancien.name, item.name);
+        if (ancien.desc) item.desc = fusionnerTraduction(ancien.desc, item.desc);
+        if (ancien.note) item.note = ancien.note;
         if (ancien.photoHidden){ delete item.photo; item.photoHidden = true; }
       }
       if (Object.prototype.hasOwnProperty.call(PRIX_BOISSONS_FIXES, item.id)) item.price = PRIX_BOISSONS_FIXES[item.id];
@@ -1683,8 +1829,11 @@ function organiserBoissonsParMarque(){
   };
   synchroniserPrix(["bv-smoothie-mangue-passion", "bv-smoothie-fraise-banane"]);
   synchroniserPrix(["bv-skyr-fruits-rouges", "bv-skyr-vanille"]);
-  const autres = existants.filter((_item, index) => !utilises.has(index));
-  if (autres.length) groupes.push({ name:"Autres boissons", openByDefault:true, items:autres });
+  const reperesConnus = Object.values(REPERES_BOISSONS).flat().map(normaliserCatalogue);
+  const autres = existants.filter((item, index) => !utilises.has(index)
+    && !/pom potes|pompotes/.test(texteArticleCatalogue(item))
+    && !reperesConnus.some(repere => texteArticleCatalogue(item).includes(repere)));
+  if (autres.length) groupes.push({ name:tx("Autres boissons","Other drinks","Otras bebidas","Altre bevande"), openByDefault:true, items:autres });
   boissons.groups = groupes;
 }
 function reparerCatalogueProduits(){
@@ -1692,7 +1841,9 @@ function reparerCatalogueProduits(){
   const materiel = CATALOG.materiel;
   reparerCartePermanente();
   assurerSushiYumeALaPiece();
-  organiserBoissonsParMarque();
+  organiserBoissonsParFamille();
+  const groupeSnacking = (CATALOG.matchMenu.groups || []).find(groupe => /sandwich chaud|snacking sale/.test(normaliserCatalogue(groupe.name))) || CATALOG.matchMenu.groups?.[0];
+  if (groupeSnacking) groupeSnacking.posterSlot = true;
   if (!boissons || !materiel) return;
   const groupeUsage = trouverGroupeCatalogue(materiel, "Usage unique", "usage unique");
   groupeUsage.openByDefault = true;
@@ -1703,13 +1854,20 @@ function reparerCatalogueProduits(){
 
   const fruits = (CATALOG.matchMenu.groups || []).flatMap(g => g.items || []).find(item => item.id === "mm-fruits" || /salade.*fruit/.test(texteArticleCatalogue(item)));
   if (fruits){
-    fruits.desc = "Base mangue & ananas, topping framboise — contenant inclus";
+    fruits.desc = fusionnerTraduction(fruits.desc, TRADUCTIONS_ARTICLES["mm-fruits"].desc);
     if (!fruits.photoHidden){ fruits.photo = fruits.photo || ASSETS_CATALOGUE.saladeFruits; fruits.photoMode = fruits.photoMode || "product"; }
   }
   Object.values(CATALOG).forEach(section => (section.groups || []).forEach(groupe => (groupe.items || []).forEach(appliquerVisuelCatalogue)));
+  appliquerTraductionsCatalogue();
 }
 
-CATALOG.matchMenu.label = "Menu du match — " + MATCH.opponent;
+function libelleMenuMatch(){
+  return tx(`Menu du match — ${MATCH.opponent}`,`Match menu — ${MATCH.opponent}`,`Menú del partido — ${MATCH.opponent}`,`Menu partita — ${MATCH.opponent}`);
+}
+function estLibelleMenuAutomatique(value){
+  return !value || /^(menu du match|match menu|menu del partido|menu partita)/.test(normaliserCatalogue(value));
+}
+CATALOG.matchMenu.label = libelleMenuMatch();
 reparerCatalogueProduits();
 
 /* Alimentation électrique — mention à faire remonter au stade */
@@ -1741,18 +1899,18 @@ function taxLabel(){
   const table = { fr:`TVA ${pct} %`, en:`VAT ${pct}%`, es:`IVA ${pct}%`, it:`IVA ${pct}%` };
   return table[currentLang] || table.fr;
 }
-function trUnit(u){
+function trUnit(u, lang){
   const table = {
     "pi\u00e8ce": { fr:"pi\u00e8ce", en:"piece", es:"pieza", it:"pezzo" },
     "unit\u00e9":  { fr:"unit\u00e9", en:"unit", es:"unidad", it:"unit\u00e0" }
   };
-  return table[u] ? trText(table[u]) : (u || "");
+  return table[u] ? trText(table[u], lang) : trText(u, lang) || "";
 }
 const STRINGS = {
   fr: {
     "acc_eyebrow": "Accueil des équipes professionnelles",
     "acc_titre": "Votre restauration au Vélodrome, simplement.",
-    "acc_intro": "En 2025 et 2026, j'ai écumé les stades de Ligue 1 et d'Europe pour voir comment on y reçoit les équipes en déplacement. J'ai créé cette application pour celles qui attendent une vraie qualité produit et une logistique au niveau de leurs exigences. Vous demandez votre accès, vous composez la commande avec les joueurs et le staff, vous contrôlez le devis et vous signez le bon.",
+    "acc_intro": "Pendant un an, j'ai suivi l'équipe de l'Olympique de Marseille dans les stades de Ligue 1 et d'Europe pour observer l'accueil réservé aux équipes en déplacement. J'ai créé cette application pour proposer une qualité produit et une logistique à la hauteur de leurs exigences. Vous demandez votre accès, vous composez la commande avec les joueurs et le staff, vous contrôlez le devis et vous signez le bon.",
     "acc_etape1_kicker": "DEMANDER",
     "acc_etape1_titre": "Demandez votre fiche",
     "acc_etape1_texte": "Remplissez le formulaire puis transmettez la demande à Amar sur WhatsApp.",
@@ -1991,7 +2149,7 @@ const STRINGS = {
   en: {
     "acc_eyebrow": "Welcome for professional teams",
     "acc_titre": "Your catering at the Vélodrome, made simple.",
-    "acc_intro": "In 2025 and 2026, I visited stadiums across Ligue 1 and Europe to see how visiting teams are hosted. I built this application for teams who expect real product quality and logistics that match their standards. You request your access, build the order with the players and staff, review the quote, and sign the order form.",
+    "acc_intro": "For one year, I followed the Olympique de Marseille team to Ligue 1 and European stadiums to observe how visiting teams are hosted. I built this application to provide product quality and logistics that meet their standards. Request access, build the order with players and staff, review the quote and sign the order form.",
     "acc_etape1_kicker": "REQUEST",
     "acc_etape1_titre": "Request your form",
     "acc_etape1_texte": "Fill in the form, then send the request to Amar on WhatsApp.",
@@ -2230,7 +2388,7 @@ const STRINGS = {
   es: {
     "acc_eyebrow": "Bienvenida a los equipos profesionales",
     "acc_titre": "Su restauración en el Vélodrome, de forma sencilla.",
-    "acc_intro": "En 2025 y 2026, recorrí los estadios de la Ligue 1 y de Europa para ver cómo se recibe a los equipos visitantes. Creé esta aplicación para los equipos que esperan una calidad de producto real y una logística a la altura de sus exigencias. Solicita tu acceso, compón el pedido con los jugadores y el staff, revisa el presupuesto y firma el pedido.",
+    "acc_intro": "Durante un año acompañé al equipo del Olympique de Marsella por los estadios de la Ligue 1 y de Europa para observar cómo se recibe a los equipos visitantes. Creé esta aplicación para ofrecer una calidad de producto y una logística a la altura de sus exigencias. Solicita tu acceso, prepara el pedido con los jugadores y el staff, revisa el presupuesto y firma el pedido.",
     "acc_etape1_kicker": "SOLICITAR",
     "acc_etape1_titre": "Solicite su ficha",
     "acc_etape1_texte": "Rellene el formulario y envíe la solicitud a Amar por WhatsApp.",
@@ -2469,7 +2627,7 @@ const STRINGS = {
   it: {
     "acc_eyebrow": "Benvenuti alle squadre professionistiche",
     "acc_titre": "La vostra ristorazione al Vélodrome, in modo semplice.",
-    "acc_intro": "Nel 2025 e nel 2026 ho visitato gli stadi di Ligue 1 e d'Europa per vedere come vengono accolte le squadre in trasferta. Ho creato questa applicazione per chi si aspetta una vera qualità del prodotto e una logistica all'altezza delle proprie esigenze. Richiedete il vostro accesso, componete l'ordine con giocatori e staff, controllate il preventivo e firmate il modulo d'ordine.",
+    "acc_intro": "Per un anno ho seguito la squadra dell'Olympique de Marseille negli stadi di Ligue 1 e d'Europa per osservare come vengono accolte le squadre in trasferta. Ho creato questa applicazione per offrire qualità del prodotto e logistica all'altezza delle loro esigenze. Richiedete l'accesso, componete l'ordine con giocatori e staff, controllate il preventivo e firmate il modulo d'ordine.",
     "acc_etape1_kicker": "RICHIEDERE",
     "acc_etape1_titre": "Richiedete la vostra scheda",
     "acc_etape1_texte": "Compilate il modulo e inviate la richiesta ad Amar su WhatsApp.",
@@ -2735,6 +2893,10 @@ function definirLangue(lang){
   if (typeof rendreCatalogue === "function") rendreCatalogue();
   if (typeof rendreMAD === "function") rendreMAD();
   if (typeof rendrePanier === "function") rendrePanier();
+  if (typeof state !== "undefined" && state.commande){
+    state.commande.language = lang;
+    if (typeof programmerSauvegardeDistante === "function" && typeof STC_REMOTE !== "undefined" && STC_REMOTE.teamToken) programmerSauvegardeDistante();
+  }
 }
 
 
@@ -2794,8 +2956,10 @@ function computeSummary(cart, catalog, logistics, tax, comments){
   };
 }
 
-function formatEUR(n){
-  return new Intl.NumberFormat("fr-FR", { style:"currency", currency:"EUR" }).format(n);
+function formatEUR(n, lang){
+  const langue = lang || (typeof currentLang !== "undefined" ? currentLang : "fr");
+  const locale = ({fr:"fr-FR",en:"en-GB",es:"es-ES",it:"it-IT"})[langue] || "fr-FR";
+  return new Intl.NumberFormat(locale, { style:"currency", currency:"EUR" }).format(n);
 }
 
 if (typeof module !== "undefined") module.exports = { flattenCatalog, computeSummary, formatEUR };
@@ -2832,8 +2996,8 @@ const DEVIS_BLOCS = [
 
 function blocDevisPourLigne(line){
   const section = String(line.sectionKey || "").toLowerCase();
-  const groupe = String(line.groupName || "").toLowerCase();
-  const nom = String(line.name || "").toLowerCase();
+  const groupe = normaliserCatalogue(line.groupName);
+  const nom = normaliserCatalogue(line.name);
   if (section === "materiel" && /usage unique|sac kraft|kit couverts|couvert kraft/.test(groupe + " " + nom)) return "usage";
   if (section === "materiel") return "location";
   if (section === "boissons") return "boissons";
@@ -2854,7 +3018,7 @@ function instagramHref(value){
   return "";
 }
 
-function buildDevisHTML(summary, order, match, issuer, logistics, tax, powerNote, logoUrl, crestUrl){
+function buildDevisHTMLFRLegacy(summary, order, match, issuer, logistics, tax, powerNote, logoUrl, crestUrl){
   const eur = formatEUR;
   const num = order.devisNumber;
   const createdAt = order.devisCreatedAt || new Date().toISOString();
@@ -3097,7 +3261,7 @@ function buildDevisHTML(summary, order, match, issuer, logistics, tax, powerNote
 }
 
 /* --- version texte pour le corps de l'email --- */
-function buildDevisText(summary, order, match, issuer, logistics, tax){
+function buildDevisTextFRLegacy(summary, order, match, issuer, logistics, tax){
   const eur = formatEUR;
   const L = [];
   L.push(`DEVIS N° ${order.devisNumber}`);
@@ -3169,6 +3333,130 @@ function buildDevisText(summary, order, match, issuer, logistics, tax){
   return L.join("\n");
 }
 
+const DEVIS_I18N = {
+  fr:{ quote:"DEVIS", signed:"BON SIGNÉ", statusDraft:"Devis à valider", statusSigned:"Bon signé · archivé", afterMatch:"Offre après-match", visiting:"Équipe visiteuse · Stade CEPAC Vélodrome", number:"N°", issued:"Établi le", purpose:"Objet de la prestation", serviceTitle:"Restauration équipe visiteuse", matchday:"Journée", kickoff:"Coup d’envoi", issuer:"Émetteur", client:"Client", mobile:"Portable", billing:"Références de facturation", po:"N° de bon de commande", pa:"N° de demande d’achat", billingContact:"Service facturation", billingMissing:"Adresse de facturation à préciser", delivery:"Livraison & service", headcount:"Effectif prévu", people:"personnes", onsiteDelivery:"Livraison sur site", onsiteContact:"Contact sur place", onsitePhone:"Téléphone sur place", requestedService:"Service souhaité", servicePlace:"Lieu de service", confirm:"à confirmer", specify:"à préciser", partners:"Partenaires — Instagram", partner:"Partenaire", nameMissing:"Nom à préciser", linkMissing:"lien à préciser", details:"Détail de l’offre — montants hors taxes", designation:"Désignation", qty:"Qté", unit:"Unité", unitPrice:"P.U. HT", totalHT:"Total HT", included:"Inclus", toPrice:"à chiffrer", composition:"Composition", comment:"Commentaire", blockSubtotal:"Sous-total du bloc", items:"unités", staffing:"Mise à disposition & personnel", hours:"heures", hour:"heure", pricingWarning:"Postes à chiffrer", pricingWarningText:"article(s) sélectionné(s) ne disposent pas encore d’un tarif. Un avenant chiffré sera établi avant validation définitive.", totalTTC:"Total TTC", includedService:"Inclus dans la mise à disposition", commitments:"Engagements produits", technical:"Besoins techniques sur site", clientDetails:"Précisions client", remarks:"Remarques", conditions:"Conditions", conditionsText:"Devis établi pour {people} personnes. Toute modification doit parvenir au plus tard {days} jours calendaires avant la réception. Prix exprimés en euros hors taxes, TVA {tax} %.", acceptance:"Acceptation du devis", acceptanceText:"Le présent devis doit nous être retourné signé au plus tard le {deadline}. Passé ce délai, la disponibilité des produits et du personnel n’est plus garantie.", clientApproval:"Le client — bon pour accord", fullName:"Nom et prénom", role:"Qualité", madeIn:"Fait à", on:"Le", digitalSignature:"Signature numérique du client", approvalMention:"précédée de la mention « bon pour accord »", representedBy:"Représentée par", validity:"Validité", until:"Jusqu’au", stamp:"Signature et cachet", detail:"DÉTAIL", contact:"Contact", email:"Email", phone:"Téléphone", staffingRate:"Taux horaire", products:"PRODUITS", needs:"Besoins matériels", approved:"Bon pour accord", digitalCaptured:"Signature numérique saisie le" },
+  en:{ quote:"QUOTE", signed:"SIGNED ORDER", statusDraft:"Quote pending approval", statusSigned:"Signed order · archived", afterMatch:"Post-match catering", visiting:"Visiting team · Stade CEPAC Vélodrome", number:"No.", issued:"Issued on", purpose:"Service purpose", serviceTitle:"Visiting-team catering", matchday:"Matchday", kickoff:"Kick-off", issuer:"Supplier", client:"Client", mobile:"Mobile", billing:"Billing references", po:"Purchase order No.", pa:"Purchase request No.", billingContact:"Billing contact", billingMissing:"Billing address to be provided", delivery:"Delivery & service", headcount:"Expected headcount", people:"people", onsiteDelivery:"On-site delivery", onsiteContact:"On-site contact", onsitePhone:"On-site phone", requestedService:"Requested service time", servicePlace:"Service location", confirm:"to be confirmed", specify:"to be provided", partners:"Partners — Instagram", partner:"Partner", nameMissing:"Name to be provided", linkMissing:"link to be provided", details:"Offer details — amounts excluding tax", designation:"Description", qty:"Qty", unit:"Unit", unitPrice:"Unit price excl. tax", totalHT:"Total excl. tax", included:"Included", toPrice:"price pending", composition:"Composition", comment:"Comment", blockSubtotal:"Section subtotal", items:"units", staffing:"Staffing & on-site support", hours:"hours", hour:"hour", pricingWarning:"Items pending price", pricingWarningText:"selected item(s) do not yet have a confirmed price. A priced amendment will be issued before final approval.", totalTTC:"Total incl. tax", includedService:"Included in the service", commitments:"Product commitments", technical:"On-site technical requirements", clientDetails:"Client details", remarks:"Notes", conditions:"Terms", conditionsText:"Quote prepared for {people} people. Any change must be received no later than {days} calendar days before the service. Prices are in euros excluding tax; VAT {tax}%.", acceptance:"Quote approval", acceptanceText:"This quote must be returned signed no later than {deadline}. After this deadline, product and staff availability cannot be guaranteed.", clientApproval:"Client — approved and accepted", fullName:"Full name", role:"Role", madeIn:"Signed in", on:"Date", digitalSignature:"Client’s digital signature", approvalMention:"preceded by the words “approved and accepted”", representedBy:"Represented by", validity:"Valid until", until:"Until", stamp:"Signature and stamp", detail:"DETAIL", contact:"Contact", email:"Email", phone:"Phone", staffingRate:"Hourly rate", products:"PRODUCTS", needs:"Equipment requirements", approved:"Approved and accepted", digitalCaptured:"Digital signature captured on" },
+  es:{ quote:"PRESUPUESTO", signed:"PEDIDO FIRMADO", statusDraft:"Presupuesto pendiente de validación", statusSigned:"Pedido firmado · archivado", afterMatch:"Oferta pospartido", visiting:"Equipo visitante · Stade CEPAC Vélodrome", number:"N.º", issued:"Emitido el", purpose:"Objeto del servicio", serviceTitle:"Restauración del equipo visitante", matchday:"Jornada", kickoff:"Inicio", issuer:"Proveedor", client:"Cliente", mobile:"Móvil", billing:"Referencias de facturación", po:"N.º de pedido", pa:"N.º de solicitud de compra", billingContact:"Contacto de facturación", billingMissing:"Dirección de facturación por indicar", delivery:"Entrega y servicio", headcount:"Número previsto", people:"personas", onsiteDelivery:"Entrega en el estadio", onsiteContact:"Contacto in situ", onsitePhone:"Teléfono in situ", requestedService:"Hora de servicio", servicePlace:"Lugar de servicio", confirm:"por confirmar", specify:"por indicar", partners:"Colaboradores — Instagram", partner:"Colaborador", nameMissing:"Nombre por indicar", linkMissing:"enlace por indicar", details:"Detalle de la oferta — importes sin impuestos", designation:"Descripción", qty:"Cant.", unit:"Unidad", unitPrice:"P.U. sin imp.", totalHT:"Total sin impuestos", included:"Incluido", toPrice:"precio pendiente", composition:"Composición", comment:"Comentario", blockSubtotal:"Subtotal de la sección", items:"unidades", staffing:"Personal y asistencia in situ", hours:"horas", hour:"hora", pricingWarning:"Partidas pendientes de precio", pricingWarningText:"artículo(s) seleccionado(s) todavía no tienen tarifa confirmada. Se emitirá una adenda antes de la validación final.", totalTTC:"Total con impuestos", includedService:"Incluido en el servicio", commitments:"Compromisos de producto", technical:"Necesidades técnicas in situ", clientDetails:"Precisiones del cliente", remarks:"Observaciones", conditions:"Condiciones", conditionsText:"Presupuesto establecido para {people} personas. Cualquier cambio debe comunicarse como máximo {days} días naturales antes del servicio. Precios en euros sin impuestos; IVA {tax}%.", acceptance:"Aceptación del presupuesto", acceptanceText:"El presupuesto debe devolverse firmado como máximo el {deadline}. Después de esta fecha no se garantiza la disponibilidad de productos y personal.", clientApproval:"Cliente — conforme y aceptado", fullName:"Nombre y apellidos", role:"Cargo", madeIn:"Firmado en", on:"Fecha", digitalSignature:"Firma digital del cliente", approvalMention:"precedida de la mención «conforme y aceptado»", representedBy:"Representada por", validity:"Validez", until:"Hasta", stamp:"Firma y sello", detail:"DETALLE", contact:"Contacto", email:"Email", phone:"Teléfono", staffingRate:"Tarifa por hora", products:"PRODUCTOS", needs:"Necesidades de material", approved:"Conforme y aceptado", digitalCaptured:"Firma digital registrada el" },
+  it:{ quote:"PREVENTIVO", signed:"ORDINE FIRMATO", statusDraft:"Preventivo da approvare", statusSigned:"Ordine firmato · archiviato", afterMatch:"Offerta post-partita", visiting:"Squadra ospite · Stade CEPAC Vélodrome", number:"N.", issued:"Emesso il", purpose:"Oggetto del servizio", serviceTitle:"Ristorazione squadra ospite", matchday:"Giornata", kickoff:"Calcio d’inizio", issuer:"Fornitore", client:"Cliente", mobile:"Cellulare", billing:"Riferimenti di fatturazione", po:"N. ordine d’acquisto", pa:"N. richiesta d’acquisto", billingContact:"Contatto fatturazione", billingMissing:"Indirizzo di fatturazione da indicare", delivery:"Consegna e servizio", headcount:"Numero previsto", people:"persone", onsiteDelivery:"Consegna allo stadio", onsiteContact:"Referente in loco", onsitePhone:"Telefono in loco", requestedService:"Orario del servizio", servicePlace:"Luogo del servizio", confirm:"da confermare", specify:"da indicare", partners:"Partner — Instagram", partner:"Partner", nameMissing:"Nome da indicare", linkMissing:"link da indicare", details:"Dettaglio dell’offerta — importi al netto delle imposte", designation:"Descrizione", qty:"Qtà", unit:"Unità", unitPrice:"Prezzo unitario netto", totalHT:"Totale netto", included:"Incluso", toPrice:"prezzo da definire", composition:"Composizione", comment:"Commento", blockSubtotal:"Subtotale della sezione", items:"unità", staffing:"Personale e assistenza in loco", hours:"ore", hour:"ora", pricingWarning:"Voci da quotare", pricingWarningText:"articolo/i selezionato/i non hanno ancora un prezzo confermato. Verrà emessa un’integrazione prima dell’approvazione finale.", totalTTC:"Totale imposte incluse", includedService:"Incluso nel servizio", commitments:"Impegni sui prodotti", technical:"Esigenze tecniche in loco", clientDetails:"Precisazioni del cliente", remarks:"Note", conditions:"Condizioni", conditionsText:"Preventivo stabilito per {people} persone. Ogni modifica deve pervenire entro {days} giorni di calendario prima del servizio. Prezzi in euro al netto delle imposte; IVA {tax}%.", acceptance:"Accettazione del preventivo", acceptanceText:"Il preventivo deve essere restituito firmato entro il {deadline}. Dopo tale data non è garantita la disponibilità di prodotti e personale.", clientApproval:"Cliente — approvato e accettato", fullName:"Nome e cognome", role:"Ruolo", madeIn:"Firmato a", on:"Data", digitalSignature:"Firma digitale del cliente", approvalMention:"preceduta dalla dicitura “approvato e accettato”", representedBy:"Rappresentata da", validity:"Validità", until:"Fino al", stamp:"Firma e timbro", detail:"DETTAGLIO", contact:"Contatto", email:"Email", phone:"Telefono", staffingRate:"Tariffa oraria", products:"PRODOTTI", needs:"Esigenze di materiale", approved:"Approvato e accettato", digitalCaptured:"Firma digitale acquisita il" }
+};
+const DEVIS_BLOC_LABELS = {
+  plats:tx("01 · Plats & recettes","01 · Dishes & recipes","01 · Platos y recetas","01 · Piatti e ricette"),
+  snacking:tx("02 · Snacking salé & finger food","02 · Savoury snacks & finger food","02 · Snacking salado y finger food","02 · Snack salati e finger food"),
+  desserts:tx("03 · Desserts & produits individuels","03 · Desserts & individual products","03 · Postres y productos individuales","03 · Dessert e prodotti individuali"),
+  boissons:tx("04 · Boissons","04 · Drinks","04 · Bebidas","04 · Bevande"),
+  usage:tx("05 · Usage unique","05 · Single-use supplies","05 · Desechables","05 · Monouso"),
+  location:tx("06 · Location & matériel","06 · Rental & equipment","06 · Alquiler y material","06 · Noleggio e materiale")
+};
+const OPERATIONAL_TRANSLATIONS = new Map([
+  ["Préparation — veille (J-1)",tx("Préparation — veille (J-1)","Preparation — day before (D-1)","Preparación — víspera (D-1)","Preparazione — vigilia (G-1)")],
+  ["Service — jour du match (J)",tx("Service — jour du match (J)","Service — matchday (D)","Servicio — día del partido (D)","Servizio — giorno partita (G)")],
+  ["Production, mise en place et conditionnement au laboratoire",tx("Production, mise en place et conditionnement au laboratoire","Production, setup and packing in the kitchen","Producción, preparación y envasado en cocina","Produzione, preparazione e confezionamento in cucina")],
+  ["Dressage sur site, service et remise en état",tx("Dressage sur site, service et remise en état","On-site plating, service and cleanup","Emplatado in situ, servicio y limpieza","Impiattamento in loco, servizio e ripristino")],
+  ["Transport et maintien en température",tx("Transport et maintien en température","Transport and temperature control","Transporte y mantenimiento de temperatura","Trasporto e mantenimento della temperatura")],
+  ["Contenants et couverts à usage unique",tx("Contenants et couverts à usage unique","Single-use containers and cutlery","Envases y cubiertos desechables","Contenitori e posate monouso")],
+  ["Dressage, service et débarrassage",tx("Dressage, service et débarrassage","Plating, service and clearing","Emplatado, servicio y recogida","Impiattamento, servizio e riordino")],
+  ["Remise en état des espaces utilisés",tx("Remise en état des espaces utilisés","Restoration of used areas","Restablecimiento de los espacios utilizados","Ripristino degli spazi utilizzati")],
+  ["Encadrement API présent sur site",tx("Encadrement API présent sur site","API management present on site","Supervisión API presente in situ","Responsabile API presente in loco")],
+  ["Prestation intégralement halal",tx("Prestation intégralement halal","Fully halal service","Servicio íntegramente halal","Servizio interamente halal")],
+  ["Viande de boucherie française",tx("Viande de boucherie française","French butcher-quality meat","Carne francesa de carnicería","Carne francese di macelleria")],
+  ["Poissons frais",tx("Poissons frais","Fresh fish","Pescado fresco","Pesce fresco")],
+  ["Fruits et légumes HVE",tx("Fruits et légumes HVE","HVE-certified fruit and vegetables","Frutas y verduras con certificación HVE","Frutta e verdura certificate HVE")]
+]);
+function devisLangue(order){ return LANGS.includes(order && order.language) ? order.language : currentLang; }
+function devisTexte(cle, lang){ return (DEVIS_I18N[lang] || DEVIS_I18N.fr)[cle] || DEVIS_I18N.fr[cle] || cle; }
+function texteOperationnel(value, lang){
+  if (value && typeof value === "object") return trText(value, lang);
+  const ref = OPERATIONAL_TRANSLATIONS.get(String(value || ""));
+  return ref ? trText(ref, lang) : String(value || "");
+}
+function formatDateHeureLang(value, lang){
+  const locale = ({fr:"fr-FR",en:"en-GB",es:"es-ES",it:"it-IT"})[lang] || "fr-FR";
+  const date = value ? new Date(value) : new Date();
+  return Number.isNaN(date.getTime()) ? String(value || "") : date.toLocaleString(locale, { dateStyle:"short", timeStyle:"short" });
+}
+function formatDateLang(value, lang){
+  const locale = ({fr:"fr-FR",en:"en-GB",es:"es-ES",it:"it-IT"})[lang] || "fr-FR";
+  if (!value) return "";
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(String(value)) ? new Date(`${value}T12:00:00Z`) : new Date(value);
+  return Number.isNaN(date.getTime()) ? String(value) : date.toLocaleDateString(locale, { timeZone:"UTC", day:"2-digit", month:"long", year:"numeric" });
+}
+function remplacerVariables(texte, variables){ return Object.entries(variables).reduce((sortie,[cle,valeur]) => sortie.split(`{${cle}}`).join(valeur), texte); }
+
+function buildDevisHTML(summary, order, match, issuer, logistics, tax, powerNote, logoUrl, crestUrl){
+  const lang = devisLangue(order), d = cle => devisTexte(cle, lang), eur = valeur => formatEUR(valeur, lang);
+  const num = order.devisNumber || "";
+  const createdAt = order.devisCreatedAt || new Date().toISOString();
+  const signatureSrc = /^data:image\/png;base64,[A-Za-z0-9+/=]+$/.test(String(order.signatureData || "")) ? order.signatureData : "";
+  const statutDocument = signatureSrc && order.signedBy ? d("statusSigned") : d("statusDraft");
+  const onsiteName = [order.onsiteFirstName, order.onsiteLastName].filter(Boolean).join(" ") || order.venueContact || d("specify");
+  const byOffer = Object.fromEntries(DEVIS_BLOCS.map(bloc => [bloc.key, []]));
+  summary.lines.forEach(line => byOffer[blocDevisPourLigne(line)].push(line));
+  const tableHead = `<thead><tr><th>${d("designation")}</th><th class="d">${d("qty")}</th><th class="d">${d("unit")}</th><th class="d">${d("unitPrice")}</th><th class="d">${d("totalHT")}</th></tr></thead>`;
+  const rows = lignes => lignes.map(l => {
+    const pu = l.included ? `<span class="txt-inclus">${d("included")}</span>` : (!l.priceKnown ? `<span class="txt-achiffrer">${d("toPrice")}</span>` : eur(l.unitPrice));
+    const total = l.included ? `<span class="txt-inclus">${d("included")}</span>` : (!l.priceKnown ? `<span class="txt-achiffrer">${d("toPrice")}</span>` : eur(l.lineHT));
+    return `<tr><td><b>${esc(trText(l.name,lang))}</b><div class="sub">${esc(trText(l.groupName,lang))} — ${d("composition")} : ${esc(trText(l.composition,lang))}</div>${l.comment ? `<div class="sub"><b>${d("comment")} :</b> ${esc(l.comment)}</div>` : ""}</td><td class="d">${l.qty}</td><td class="d">${esc(trUnit(l.unit,lang))}</td><td class="d">${pu}</td><td class="d">${total}</td></tr>`;
+  }).join("");
+  const offerBlocks = DEVIS_BLOCS.filter(bloc => byOffer[bloc.key].length).map(bloc => {
+    const lignes = byOffer[bloc.key], subtotal = lignes.reduce((total, ligne) => total + (ligne.priceKnown ? ligne.lineHT : 0), 0), quantity = lignes.reduce((total, ligne) => total + ligne.qty, 0);
+    return `<section class="d-offre"><div class="d-offre-tete"><h3>${esc(trText(DEVIS_BLOC_LABELS[bloc.key],lang))}</h3><span>${quantity} ${d("items")}</span></div><table class="dt">${tableHead}<tbody>${rows(lignes)}</tbody></table><div class="d-offre-sous-total"><span>${d("blockSubtotal")}</span><b>${eur(subtotal)} HT</b></div></section>`;
+  }).join("");
+  const logisticsRows = summary.logisticsLines.map(l => `<tr><td><b>${esc(texteOperationnel(l.label,lang))}</b><div class="sub">${esc(texteOperationnel(l.detail,lang))} — ${l.people} ${d("people")} × ${l.hours} h</div></td><td class="d">${l.totalHours}</td><td class="d">${d("hour")}</td><td class="d">${eur(logistics.rate)}</td><td class="d">${eur(l.cost)}</td></tr>`).join("");
+  const billing = [[d("po"),order.poNumber],[d("pa"),order.paNumber],[d("billingContact"),order.billingContact]].filter(([,v]) => String(v || "").trim());
+  const partners = [{name:order.partner1Name,instagram:order.partner1Instagram},{name:order.partner2Name,instagram:order.partner2Instagram}].filter(p => p.name || p.instagram);
+  const billingAddr = order.billingAddress && order.billingAddress.trim() ? esc(order.billingAddress).replace(/\n/g,"<br>") : d("billingMissing");
+  const matchDate = formatDateLang(match.isoDate || match.match_date, lang) || match.date;
+  const deadline = formatDateLang(match.orderDeadlineISO || match.order_deadline, lang) || match.orderDeadline;
+  const translatedPower = lang === "fr" ? powerNote : ({en:"Provide a suitable dedicated power supply near each hot-holding cabinet, with secure delivery-point access.",es:"Prever una alimentación eléctrica específica y adecuada cerca de cada armario caliente, con acceso seguro al punto de entrega.",it:"Prevedere un’alimentazione elettrica dedicata e adeguata vicino a ogni armadio caldo, con accesso sicuro al punto di consegna."})[lang];
+  const taxText = `${lang === "en" ? "VAT" : (lang === "fr" ? "TVA" : "IVA")} ${Math.round(tax.rate*100)}%`;
+  return `<div class="feuille" id="feuille">
+    <div class="d-tete"><div class="d-brand"><div class="d-logos"><img class="d-brand-logo" src="${LOGO_BLANC}" alt="API Restauration">${crestUrl ? `<span class="d-logo-sep"></span><img class="d-club-logo" src="${crestUrl}" alt="${esc(match.opponent)}">` : ""}</div><div class="d-brand-copy"><b>${d("afterMatch")}</b><br>${d("visiting")}</div></div><div class="dr"><h2>${signatureSrc && order.signedBy ? d("signed") : d("quote")}</h2><div class="n">${d("number")} ${esc(num)}</div><div class="n">${d("issued")} ${formatDateHeureLang(createdAt,lang)}</div></div><div class="tampon">${statutDocument}</div></div>
+    <div class="d-corps"><div class="d-block d-hero"><div class="d-lbl">${d("purpose")}</div><div class="d-hero-title">${d("serviceTitle")} — OM × ${esc(match.opponent)}</div><div class="d-hero-meta">${esc(match.competition)} · ${d("matchday")} ${esc(match.journee)} — ${esc(matchDate)} · ${d("kickoff")} ${esc(match.kickoff)} · ${esc(match.venueFull)}</div></div>
+    <div class="d-block d-cols"><div class="d-partie"><div class="d-lbl">${d("issuer")}</div><div class="nm">${esc(issuer.name)}</div><div class="ln">${issuer.lines.map(esc).join("<br>")}<br>SIREN ${esc(issuer.siren)} · ${taxText}<br>${esc(issuer.contact)}<br>${d("mobile")} ${esc(issuer.phone)} · ${esc(issuer.email)}</div></div><div class="d-partie"><div class="d-lbl">${d("client")}</div><div class="nm">${esc(order.club || match.opponent)}</div><div class="ln">${esc(order.name)}${order.role ? " — " + esc(order.role) : ""}<br>${esc(order.email)}${order.phone ? "<br>" + esc(order.phone) : ""}<br>${billingAddr}</div></div></div>
+    ${billing.length ? `<div class="d-block"><div class="d-lbl">${d("billing")}</div><div class="d-grille">${billing.map(([label,value]) => `<div><div class="l">${esc(label)}</div><div class="v">${esc(value)}</div></div>`).join("")}</div></div>` : ""}
+    <div class="d-block"><div class="d-lbl">${d("delivery")}</div><div class="d-grille"><div><div class="l">${d("headcount")}</div><div class="v">${esc(order.headcount)} ${d("people")}</div></div><div><div class="l">${d("onsiteDelivery")}</div><div class="v">${esc(order.deliveryTime || d("confirm"))}</div></div><div><div class="l">${d("onsiteContact")}</div><div class="v">${esc(onsiteName)}</div></div><div><div class="l">${d("onsitePhone")}</div><div class="v">${esc(order.onsitePhone || d("specify"))}</div></div><div><div class="l">${d("requestedService")}</div><div class="v">${esc(order.serviceTime || d("confirm"))}</div></div><div><div class="l">${d("servicePlace")}</div><div class="v">${esc(order.deliveryPlace || d("specify"))}</div></div></div></div>
+    ${partners.length ? `<div class="d-block"><div class="d-lbl">${d("partners")}</div><div class="d-grille">${partners.map((partner,index) => `<div><div class="l">${d("partner")} ${index+1}</div><div class="v">${esc(partner.name || d("nameMissing"))}<br>${partner.instagram ? esc(partner.instagram) : d("linkMissing")}</div></div>`).join("")}</div></div>` : ""}
+    <div class="d-block d-detail"><div class="d-lbl">${d("details")}</div><div class="d-offres">${offerBlocks}<section class="d-offre"><div class="d-offre-tete"><h3>07 · ${d("staffing")}</h3><span>${summary.logisticsHours} ${d("hours")}</span></div><table class="dt">${tableHead}<tbody>${logisticsRows}</tbody></table><div class="d-offre-sous-total"><span>${d("blockSubtotal")}</span><b>${eur(summary.logisticsHT)} HT</b></div></section></div><div class="d-totaux"><div class="r ht"><span>${d("totalHT")}</span><b>${eur(summary.totalHT)}</b></div><div class="r"><span>${taxText}</span><b>${eur(summary.tvaAmount)}</b></div><div class="r ttc"><span>${d("totalTTC")}</span><b>${eur(summary.totalTTC)}</b></div></div>${summary.tbdCount ? `<p class="d-note"><b>${d("pricingWarning")} :</b> ${summary.tbdCount} ${d("pricingWarningText")}</p>` : ""}</div>
+    <div class="d-block"><div class="d-lbl">${d("includedService")}</div><div class="d-note">${logistics.included.map(item => "• " + esc(texteOperationnel(item,lang))).join("<br>")}</div></div>
+    <div class="d-block"><div class="d-lbl">${d("commitments")}</div><div class="d-note">${logistics.charter.map(item => "• " + esc(texteOperationnel(item,lang))).join("<br>")}</div></div>
+    <div class="d-block"><div class="d-lbl">${d("technical")}</div><div class="d-note">${esc(translatedPower)}${order.materialNotes ? `<br><br><b>${d("clientDetails")} :</b> ${esc(order.materialNotes).replace(/\n/g,"<br>")}` : ""}</div></div>
+    ${order.notes && order.notes.trim() ? `<div class="d-block"><div class="d-lbl">${d("remarks")}</div><div class="d-note">${esc(order.notes).replace(/\n/g,"<br>")}</div></div>` : ""}
+    <div class="d-block"><div class="d-lbl">${d("conditions")}</div><div class="d-note">${esc(remplacerVariables(d("conditionsText"),{people:order.headcount,days:match.orderLeadDays,tax:Math.round(tax.rate*100)}))}</div></div>
+    <div class="d-block"><div class="d-lbl">${d("acceptance")}</div><p class="d-note">${esc(remplacerVariables(d("acceptanceText"),{deadline:deadline || d("specify")}))}</p><div class="pave"><div class="pave-c"><div class="pave-t">${d("clientApproval")}</div><div class="pave-ch"><span>${d("fullName")}</span><i>${esc(order.signedBy || "")}</i></div><div class="pave-ch"><span>${d("role")}</span><i>${esc(order.signedRole || "")}</i></div><div class="pave-ch"><span>${d("madeIn")}</span><i>Marseille</i></div><div class="pave-ch"><span>${d("on")}</span><i>${order.signatureCapturedAt ? formatDateHeureLang(order.signatureCapturedAt,lang) : ""}</i></div><div class="pave-z">${signatureSrc ? `<img class="signature-preview" src="${signatureSrc}" alt="${d("digitalSignature")}">` : `<span>${d("digitalSignature")}<br><em>${d("approvalMention")}</em></span>`}</div></div><div class="pave-c"><div class="pave-t">API Restauration</div><div class="pave-ch"><span>${d("representedBy")}</span><i>${esc(issuer.contact)}</i></div><div class="pave-ch"><span>${d("number")}</span><i>${esc(num)}</i></div><div class="pave-ch"><span>${d("issued")}</span><i>${formatDateHeureLang(createdAt,lang)}</i></div><div class="pave-ch"><span>${d("validity")}</span><i>${d("until")} ${esc(deadline)}</i></div><div class="pave-z"><span>${d("stamp")}</span></div></div></div></div></div>
+    <div class="d-pied"><img src="${logoUrl || LOGO_COULEUR}" alt="API Restauration"><div class="legal"><b>API RESTAURATION SAS · OM PRO 05147</b><br>SIREN ${esc(issuer.siren)} · ${taxText}<br>Amar Lacidi · ${esc(issuer.phone)} · Olympique de Marseille</div></div></div>`;
+}
+
+function buildDevisText(summary, order, match, issuer, logistics, tax){
+  const lang = devisLangue(order), d = cle => devisTexte(cle,lang), eur = valeur => formatEUR(valeur,lang), L = [];
+  const byOffer = Object.fromEntries(DEVIS_BLOCS.map(bloc => [bloc.key, []]));
+  summary.lines.forEach(line => byOffer[blocDevisPourLigne(line)].push(line));
+  L.push(`${d("quote")} ${d("number")} ${order.devisNumber || ""}`);
+  L.push(`${d("issued")} ${formatDateHeureLang(order.devisCreatedAt,lang)}`);
+  L.push(`${d("serviceTitle")} — OM × ${match.opponent}`);
+  L.push(`${formatDateLang(match.isoDate || match.match_date,lang) || match.date} · ${d("kickoff")} ${match.kickoff} · ${match.venueFull}`);
+  L.push("=".repeat(58), "", `${d("client")} : ${order.club || match.opponent}`, `${d("contact")} : ${order.name}${order.role ? " — " + order.role : ""}`, `${d("email")} : ${order.email}`);
+  if (order.phone) L.push(`${d("phone")} : ${order.phone}`);
+  L.push(`${d("headcount")} : ${order.headcount} ${d("people")}`, `${d("onsiteDelivery")} : ${order.deliveryTime || d("confirm")} — ${order.deliveryPlace || d("specify")}`, `${d("requestedService")} : ${order.serviceTime || d("confirm")}`, "", d("detail"), "-".repeat(58));
+  DEVIS_BLOCS.filter(bloc => byOffer[bloc.key].length).forEach(bloc => {
+    L.push("", trText(DEVIS_BLOC_LABELS[bloc.key],lang).toUpperCase());
+    byOffer[bloc.key].forEach(line => {
+      const value = line.included ? d("included") : (line.priceKnown ? eur(line.lineHT) : d("toPrice"));
+      L.push(`  ${line.qty} × ${trText(line.name,lang)} — ${value}`, `     ${d("composition")} : ${trText(line.composition,lang)}`);
+      if (line.comment) L.push(`     ${d("comment")} : ${line.comment}`);
+    });
+  });
+  L.push("", d("staffing").toUpperCase());
+  summary.logisticsLines.forEach(line => L.push(`  ${texteOperationnel(line.label,lang)} — ${line.people} × ${line.hours} h = ${eur(line.cost)}`));
+  L.push("", "-".repeat(58), `${d("totalHT")} ${eur(summary.totalHT)}`, `${lang === "en" ? "VAT" : (lang === "fr" ? "TVA" : "IVA")} ${Math.round(tax.rate*100)}% ${eur(summary.tvaAmount)}`, `${d("totalTTC")} ${eur(summary.totalTTC)}`);
+  if (summary.tbdCount) L.push(`${summary.tbdCount} ${d("pricingWarningText")}`);
+  L.push("", `${d("included").toUpperCase()} : ${logistics.included.map(item => texteOperationnel(item,lang)).join(" · ")}`, `${d("products")} : ${logistics.charter.map(item => texteOperationnel(item,lang)).join(" · ")}`);
+  if (order.materialNotes) L.push("", `${d("needs")} : ${order.materialNotes}`);
+  if (order.notes) L.push("", `${d("remarks")} : ${order.notes}`);
+  if (order.signedBy) L.push("", `${d("approved")} : ${order.signedBy}${order.signedRole ? " — " + order.signedRole : ""}`, order.signatureCapturedAt ? `${d("digitalCaptured")} ${formatDateHeureLang(order.signatureCapturedAt,lang)}` : "");
+  L.push("", issuer.name, issuer.contact, `${d("mobile")} : ${issuer.phone}`);
+  return L.filter((line,index,all) => line !== "" || all[index-1] !== "").join("\n");
+}
+
 if (typeof module !== "undefined") module.exports = { buildDevisHTML, buildDevisText, devisNumber, todayFR };
 
 
@@ -3198,7 +3486,7 @@ function appliquerConfig(cfg){
   }
   if (cfg.matchMenu && Array.isArray(cfg.matchMenu.groups)){
     CATALOG.matchMenu.groups = cfg.matchMenu.groups;
-    CATALOG.matchMenu.label = cfg.matchMenu.label || ("Menu du match — " + MATCH.opponent);
+    CATALOG.matchMenu.label = cfg.matchMenu.label || libelleMenuMatch();
   }
   if (cfg.materiel && Array.isArray(cfg.materiel.groups)){
     CATALOG.materiel.groups = cfg.materiel.groups;
@@ -3209,8 +3497,8 @@ function appliquerConfig(cfg){
     });
     reparerCartePermanente();
   }
-  if (!CATALOG.matchMenu.label || /^Menu du match(?:\s—.*)?$/.test(CATALOG.matchMenu.label)) {
-    CATALOG.matchMenu.label = "Menu du match — " + MATCH.opponent;
+  if (estLibelleMenuAutomatique(CATALOG.matchMenu.label)) {
+    CATALOG.matchMenu.label = libelleMenuMatch();
   }
   reparerCatalogueProduits();
   if (Object.prototype.hasOwnProperty.call(cfg, "crest")) window.__crestDataUrl = cfg.crest || "";
@@ -3228,10 +3516,38 @@ function reparerCartePermanente(){
     return;
   }
   CATALOG.pizzas.groups.forEach(g => {
-    if (!g.logo && (g.name || "").toLowerCase().includes("di meco")) g.logo = "casadimeco";
+    if (!g.logo && normaliserCatalogue(g.name).includes("di meco")) g.logo = "casadimeco";
     (g.items || []).forEach(it => { if (!it.photo && PHOTOS_REF[it.id]) it.photo = PHOTOS_REF[it.id]; });
   });
   const groupeCasa = CATALOG.pizzas.groups.find(g => normaliserCatalogue(g.name).includes("casa di meco")) || CATALOG.pizzas.groups[0];
+  const referencesPizza = PIZZAS_REF.groups.flatMap(g => g.items || []);
+  const ancienneRoyale = groupeCasa && groupeCasa.items.find(item => item.id === "pz-royale-bresaola");
+  if (groupeCasa && ancienneRoyale){
+    const index = groupeCasa.items.indexOf(ancienneRoyale);
+    const variantes = ["pz-royale-bresaola-tomate","pz-royale-bresaola-blanche"].map(id => {
+      const reference = referencesPizza.find(item => item.id === id);
+      const item = JSON.parse(JSON.stringify(reference));
+      if (typeof ancienneRoyale.price === "number") item.price = ancienneRoyale.price;
+      if (ancienneRoyale.photo) item.photo = ancienneRoyale.photo;
+      return item;
+    }).filter(Boolean);
+    groupeCasa.items.splice(index, 1, ...variantes);
+  }
+  ["pz-royale-bresaola-tomate","pz-royale-bresaola-blanche"].forEach(id => {
+    const reference = referencesPizza.find(item => item.id === id);
+    if (!groupeCasa || !reference) return;
+    const item = assurerArticleCatalogue(groupeCasa, reference, { reperes:[id], forcePrice:false });
+    item.cardGroup = reference.cardGroup;
+    item.cardTitle = fusionnerTraduction(item.cardTitle, reference.cardTitle);
+    item.variantName = fusionnerTraduction(item.variantName, reference.variantName);
+    item.name = fusionnerTraduction(item.name, reference.name);
+    item.desc = fusionnerTraduction(item.desc, reference.desc);
+  });
+  ["pz-moitie","pz-dimeco"].forEach(id => {
+    const reference = referencesPizza.find(item => item.id === id);
+    const item = groupeCasa && groupeCasa.items.find(article => article.id === id);
+    if (item && reference && /base blanche|white base|base blanca|base bianca/.test(normaliserCatalogue(item.desc))) item.desc = JSON.parse(JSON.stringify(reference.desc));
+  });
   const margheritaRef = PIZZAS_REF.groups.flatMap(g => g.items || []).find(it => it.id === "pz-margherita");
   if (groupeCasa && margheritaRef){
     const margherita = assurerArticleCatalogue(groupeCasa, margheritaRef, { reperes:["margherita"], forcePrice:true });
@@ -3523,8 +3839,8 @@ function panneauMatch(p){
     MATCH.orderLeadDays = parseInt(g("mDelai"),10) || MATCH.orderLeadDays;
     MATCH.venueFull = g("mLieu");
     recalculerEcheance();
-    if (!CATALOG.matchMenu.label || /^Menu du match(?:\s—.*)?$/.test(CATALOG.matchMenu.label)) {
-      CATALOG.matchMenu.label = "Menu du match — " + MATCH.opponent;
+    if (estLibelleMenuAutomatique(CATALOG.matchMenu.label)) {
+      CATALOG.matchMenu.label = libelleMenuMatch();
     }
     rendreBandeau(); rendrePanier();
     if (STC_REMOTE.currentRemoteMatchId){
@@ -3575,19 +3891,17 @@ function optimiserVisuelFichier(file, maxSide = 1440){
 
 function panneauMenu(p, mode = "recettes"){
   const estMateriel = mode === "materiel";
-  const sectionKeys = estMateriel ? ["materiel"] : ["matchMenu","boissons"];
+  const sectionKeys = estMateriel ? ["materiel"] : ["pizzas","sushi","matchMenu","boissons"];
   const sectionAjout = estMateriel ? "materiel" : "matchMenu";
   const sections = sectionKeys.map(key => ({ key, label:CATALOG[key].label, groups:CATALOG[key].groups }));
   const libelleBloc = estMateriel ? "bloc de matériel" : "bloc de recettes";
   const exempleBloc = estMateriel ? "Ex. Maintien en température" : "Ex. Finger food";
   const nomArticle = estMateriel ? "Nouveau matériel" : "Nouvelle recette";
   const renduVisuelGroupe = (sec, g, gi) => {
-    if (sec.key !== "matchMenu") return "";
+    if (sec.key !== "matchMenu" || !estGroupeSnacking(g)) return "";
     const snacking = estGroupeSnacking(g);
-    const titre = g.coverTitle || (snacking ? "Affiche du snacking salé" : "Visuel de la prestation");
-    const aide = snacking
-      ? "Ajoutez l’affiche créée pour ce match. Elle sera visible en tête de cette prestation dans le bon de commande."
-      : "Ajoutez un visuel panoramique facultatif pour présenter cette prestation dans le bon de commande.";
+    const titre = trText(g.coverTitle || tx("Affiche du snacking salé","Savoury snacks poster","Cartel de snacking salado","Locandina snack salati"));
+    const aide = "Ajoutez l’affiche A4 portrait créée pour ce match. Elle sera affichée entière, sans recadrage, uniquement dans la section Snacking salé du bon de commande.";
     return `<div class="adm-visuel">
       <div class="adm-visuel-copy"><b>${esc(titre)}</b><span>${esc(aide)}</span></div>
       <div class="adm-photo-actions">
@@ -3616,33 +3930,37 @@ function panneauMenu(p, mode = "recettes"){
       ? `Ajoutez autant de blocs et de matériels que nécessaire. Chaque intitulé, description, unité et prix HT peut être modifié ou supprimé.`
       : `Chaque recette doit mentionner sa composition. Vous pouvez créer un bloc libre, par exemple <b>Finger food</b>, puis y ajouter autant de recettes que nécessaire. Laissez le prix <b>vide</b> pour afficher « à confirmer », ou saisissez <b>0</b> pour un article inclus.`}
     </p>
+    <div class="adm-lang-editor">
+      <div><b>Langue affichée et éditée</b><span>Les noms, compositions, familles et titres du devis sont enregistrés séparément dans chaque langue.</span></div>
+      <div class="adm-lang-buttons" role="group" aria-label="Langue du catalogue">${LANGS.map(lang => `<button type="button" data-admin-lang="${lang}" class="${lang===currentLang?"actif":""}">${lang.toUpperCase()}</button>`).join("")}</div>
+    </div>
     <div class="adm-bloc-add">
       <input id="nouveauBlocCatalogue" value="" placeholder="${exempleBloc}" aria-label="Nom du nouveau ${libelleBloc}">
       <button type="button" class="bt bt-plein" id="ajouterBlocCatalogue">+ Ajouter ce ${libelleBloc}</button>
     </div>
-    ${sections.map(sec => `<div class="famille"><input class="adm-grp-nom" data-section-label="${sec.key}" value="${ech(sec.label)}" aria-label="Intitulé de la section"></div>
+    ${sections.map(sec => `<div class="famille"><input class="adm-grp-nom" data-section-label="${sec.key}" value="${ech(trText(sec.label))}" aria-label="Intitulé de la section"></div>
       ${sec.groups.map((g,gi) => `
         <div class="adm-grp">
           <div class="adm-grp-tete">
-            <input class="adm-grp-nom" data-s="${sec.key}" data-g="${gi}" value="${ech(g.name)}" aria-label="Nom du bloc">
+            <input class="adm-grp-nom" data-s="${sec.key}" data-g="${gi}" value="${ech(trText(g.name))}" aria-label="Nom du bloc">
             <button class="adm-x" data-suppr-g="${sec.key}:${gi}" title="Supprimer le bloc">Supprimer le bloc</button>
           </div>
           ${renduVisuelGroupe(sec, g, gi)}
           ${g.items.map((it,ii) => `
             <div class="adm-item">
               <div class="adm-item-l1">
-                <input data-s="${sec.key}" data-g="${gi}" data-i="${ii}" data-f="name" value="${ech(it.name)}" placeholder="${estMateriel ? "Nom du matériel" : "Nom de la recette"}" aria-label="Nom">
+                <input data-s="${sec.key}" data-g="${gi}" data-i="${ii}" data-f="name" value="${ech(trText(it.name))}" placeholder="${estMateriel ? "Nom du matériel" : "Nom de la recette"}" aria-label="Nom">
                 <input data-s="${sec.key}" data-g="${gi}" data-i="${ii}" data-f="price" type="number" min="0" step="0.01" value="${it.price === null || it.price === undefined ? "" : it.price}" placeholder="Prix HT" class="adm-prix" aria-label="Prix HT">
                 <input data-s="${sec.key}" data-g="${gi}" data-i="${ii}" data-f="unit" value="${ech(it.unit || "")}" placeholder="unité" class="adm-unit" aria-label="Unité">
                 <button class="adm-x" data-suppr-i="${sec.key}:${gi}:${ii}" title="Supprimer l'article">✕</button>
               </div>
-              <input data-s="${sec.key}" data-g="${gi}" data-i="${ii}" data-f="desc" value="${ech(it.desc)}" placeholder="${estMateriel ? "Description obligatoire" : "Composition obligatoire"}" aria-label="${estMateriel ? "Description du matériel" : "Composition de la recette"}">
+              <input data-s="${sec.key}" data-g="${gi}" data-i="${ii}" data-f="desc" value="${ech(trText(it.desc))}" placeholder="${estMateriel ? "Description obligatoire" : "Composition obligatoire"}" aria-label="${estMateriel ? "Description du matériel" : "Composition de la recette"}">
               ${estMateriel ? "" : `<label class="adm-check"><input type="checkbox" data-s="${sec.key}" data-g="${gi}" data-i="${ii}" data-f="meatFree" ${it.meatFree ? "checked" : ""}>Sans viande</label>`}
               ${renduVisuelArticle(sec, g, gi, it, ii)}
             </div>`).join("")}
           <button class="adm-ajout" data-ajout-i="${sec.key}:${gi}">+ Ajouter ${estMateriel ? "un matériel" : "une recette / un produit"}</button>
         </div>`).join("")}
-      <button class="adm-ajout adm-ajout-g" data-ajout-g="${sec.key}">+ Ajouter un autre bloc dans « ${sec.label} »</button>`).join("")}
+      <button class="adm-ajout adm-ajout-g" data-ajout-g="${sec.key}">+ Ajouter un autre bloc dans « ${ech(trText(sec.label))} »</button>`).join("")}
     <div class="actions"><button class="bt bt-plein" id="menuOk">Enregistrer ${estMateriel ? "le matériel" : `les recettes et les prix de ${ech(MATCH.opponent)}`}</button></div>`;
 
   const appliquerChamps = (verifierDescriptions = false) => {
@@ -3661,10 +3979,12 @@ function panneauMenu(p, mode = "recettes"){
       }
     }
     p.querySelectorAll("[data-section-label]").forEach(inp => {
-      CATALOG[inp.dataset.sectionLabel].label = inp.value.trim() || "Sans titre";
+      const section = CATALOG[inp.dataset.sectionLabel];
+      section.label = definirTraduction(section.label, currentLang, inp.value.trim() || "Sans titre");
     });
     p.querySelectorAll(".adm-grp-nom[data-s]").forEach(inp => {
-      CATALOG[inp.dataset.s].groups[+inp.dataset.g].name = inp.value.trim() || "Sans nom";
+      const groupe = CATALOG[inp.dataset.s].groups[+inp.dataset.g];
+      groupe.name = definirTraduction(groupe.name, currentLang, inp.value.trim() || "Sans nom");
     });
     p.querySelectorAll("[data-f]").forEach(inp => {
       const s = inp.dataset.s, g = +inp.dataset.g, i = +inp.dataset.i, f = inp.dataset.f;
@@ -3678,7 +3998,7 @@ function panneauMenu(p, mode = "recettes"){
       } else if (f === "unit"){
         const v = inp.value.trim(); if (v) it.unit = v; else delete it.unit;
       } else {
-        it[f] = inp.value.trim();
+        it[f] = definirTraduction(it[f], currentLang, inp.value.trim());
       }
     });
     return true;
@@ -3686,8 +4006,8 @@ function panneauMenu(p, mode = "recettes"){
 
   const nouvelArticle = s => ({
     id:nouvelId(s === "materiel" ? "mt" : "rc"),
-    name:nomArticle,
-    desc:"",
+    name:{ [currentLang]:nomArticle },
+    desc:{ [currentLang]:"" },
     price:null,
     unit:"unité"
   });
@@ -3697,7 +4017,7 @@ function panneauMenu(p, mode = "recettes"){
     const nom = input.value.trim();
     if (!nom){ input.focus(); notifier(`Indiquez le nom du ${libelleBloc}`); return; }
     appliquerChamps(false);
-    CATALOG[sectionAjout].groups.push({ name:nom, items:[nouvelArticle(sectionAjout)] });
+    CATALOG[sectionAjout].groups.push({ name:{ [currentLang]:nom }, items:[nouvelArticle(sectionAjout)] });
     sauvegarderConfigurationDistanteSilencieuse();
     rendreAdmin();
     notifier(`Bloc « ${nom} » ajouté — complétez maintenant son premier article`);
@@ -3730,7 +4050,7 @@ function panneauMenu(p, mode = "recettes"){
   p.querySelectorAll("[data-ajout-g]").forEach(b => b.addEventListener("click", () => {
     appliquerChamps(false);
     const s = b.dataset.ajoutG;
-    CATALOG[s].groups.push({ name:estMateriel ? "Nouveau bloc de matériel" : "Nouveau bloc de recettes", items:[nouvelArticle(s)] });
+    CATALOG[s].groups.push({ name:{ [currentLang]:estMateriel ? "Nouveau bloc de matériel" : "Nouveau bloc de recettes"}, items:[nouvelArticle(s)] });
     sauvegarderConfigurationDistanteSilencieuse();
     rendreAdmin();
   }));
@@ -3750,7 +4070,7 @@ function panneauMenu(p, mode = "recettes"){
       if (type === "cover"){
         groupe.coverPhoto = visuel;
         groupe.posterSlot = true;
-        groupe.coverTitle = estGroupeSnacking(groupe) ? "Affiche du snacking salé" : "Visuel de la prestation";
+        groupe.coverTitle = tx("Affiche du snacking salé","Savoury snacks poster","Cartel de snacking salado","Locandina snack salati");
       } else {
         article.photo = visuel;
         article.photoMode = "product";
@@ -3791,6 +4111,13 @@ function panneauMenu(p, mode = "recettes"){
     sauvegarderConfigurationDistanteSilencieuse();
     rendreAdmin();
     notifier("Photo produit retirée");
+  }));
+  p.querySelectorAll("[data-admin-lang]").forEach(b => b.addEventListener("click", evenement => {
+    evenement.preventDefault();
+    evenement.stopPropagation();
+    appliquerChamps(false);
+    definirLangue(b.dataset.adminLang);
+    rendreAdmin();
   }));
 
   const propagerTarifBoisson = champ => {
@@ -3838,13 +4165,14 @@ function panneauMenu(p, mode = "recettes"){
 function panneauPersonnel(p){
   p.innerHTML = `
     <p class="adm-aide">Forfait de mise à disposition. Ces valeurs ne sont pas visibles par le club visiteur, mais leur montant figure au devis.</p>
+    <div class="adm-lang-editor"><div><b>Langue affichée et éditée</b><span>Les libellés de personnel sont repris dans le devis final.</span></div><div class="adm-lang-buttons">${LANGS.map(lang => `<button type="button" data-personnel-lang="${lang}" class="${lang===currentLang?"actif":""}">${lang.toUpperCase()}</button>`).join("")}</div></div>
     ${LOGISTICS.phases.map((ph,i) => `
       <div class="adm-grp">
-        <div class="adm-grp-tete"><input class="adm-grp-nom" id="pl-${i}" value="${ech(ph.label)}" aria-label="Intitulé de la phase"></div>
+        <div class="adm-grp-tete"><input class="adm-grp-nom" id="pl-${i}" value="${ech(texteOperationnel(ph.label,currentLang))}" aria-label="Intitulé de la phase"></div>
         <div class="champs">
           <div class="ch"><label for="pp-${i}">Personnes</label><input id="pp-${i}" type="number" min="0" step="1" value="${ph.people}"></div>
           <div class="ch"><label for="ph-${i}">Heures par personne</label><input id="ph-${i}" type="number" min="0" step="0.5" value="${ph.hours}"></div>
-          <div class="ch large"><label for="pd-${i}">Détail affiché</label><input id="pd-${i}" value="${ech(ph.detail)}"></div>
+          <div class="ch large"><label for="pd-${i}">Détail affiché</label><input id="pd-${i}" value="${ech(texteOperationnel(ph.detail,currentLang))}"></div>
         </div>
       </div>`).join("")}
     <div class="champs">
@@ -3857,6 +4185,15 @@ function panneauPersonnel(p){
     </div>`;
 
   p.querySelectorAll("input").forEach(input => input.addEventListener("input", sauvegarderConfigurationDistanteSilencieuse));
+  p.querySelectorAll("[data-personnel-lang]").forEach(bouton => bouton.addEventListener("click", evenement => {
+    evenement.preventDefault();
+    LOGISTICS.phases.forEach((phase,index) => {
+      phase.label = definirTraduction(phase.label,currentLang,document.getElementById("pl-"+index).value.trim());
+      phase.detail = definirTraduction(phase.detail,currentLang,document.getElementById("pd-"+index).value.trim());
+    });
+    definirLangue(bouton.dataset.personnelLang);
+    rendreAdmin();
+  }));
 
   document.getElementById("persoOk").addEventListener("click", async () => {
     LOGISTICS.phases.forEach((ph,i) => {
@@ -3866,8 +4203,8 @@ function panneauPersonnel(p){
       const dt = document.getElementById("pd-"+i).value.trim();
       if (!isNaN(pe) && pe >= 0) ph.people = pe;
       if (!isNaN(he) && he >= 0) ph.hours = he;
-      if (lb) ph.label = lb;
-      if (dt) ph.detail = dt;
+      if (lb) ph.label = definirTraduction(ph.label,currentLang,lb);
+      if (dt) ph.detail = definirTraduction(ph.detail,currentLang,dt);
     });
     const r = parseFloat(document.getElementById("pRate").value);
     const b = parseInt(document.getElementById("pBase").value,10);
@@ -4544,8 +4881,8 @@ function appliquerContexteEquipe(data){
   });
   recalculerEcheance();
   document.title = `OM × ${MATCH.opponent} — Commande restauration · Vélodrome`;
-  if (!CATALOG.matchMenu.label || /^Menu du match(?:\s—.*)?$/.test(CATALOG.matchMenu.label)) {
-    CATALOG.matchMenu.label = "Menu du match — " + MATCH.opponent;
+  if (estLibelleMenuAutomatique(CATALOG.matchMenu.label)) {
+    CATALOG.matchMenu.label = libelleMenuMatch();
   }
   appliquerLogosCourants();
   appliquerSnapshotCommande(data.order);
@@ -4590,6 +4927,11 @@ function appliquerContexteEquipe(data){
     STC_REMOTE.teamLastSavedSignature = signatureCommande(payloadCommandeDistante());
     if (!STC_REMOTE.teamSaveConflict) sauvegarderBrouillonLocal(false);
   }
+  if (state.commande && LANGS.includes(state.commande.language)){
+    currentLang = state.commande.language;
+    try { localStorage.setItem("stc_lang", currentLang); } catch(_e){}
+    appliquerLangueDOM();
+  }
   document.getElementById("btnAdmin").style.display = "none";
   document.getElementById("btnAdmin2").style.display = "none";
   rendreBandeau(); rendreCatalogue(); rendreMAD(); rendrePanier();
@@ -4614,11 +4956,11 @@ function appliquerSnapshotCommande(order){
   snapshot.forEach(source => {
     const item = actuel[source.id];
     if (!item) return;
-    const original = CATALOG[item.sectionKey].groups.find(g => g.name === item.groupName)?.items.find(it => it.id === source.id);
+    const original = CATALOG[item.sectionKey].groups.flatMap(groupe => groupe.items || []).find(article => article.id === source.id);
     if (!original) return;
-    original.name = trText(source.name, "fr") || original.name;
-    original.desc = trText(source.composition, "fr") || original.desc || "";
-    original.unit = String(source.unit || original.unit || "pièce");
+    original.name = source.name || original.name;
+    original.desc = source.composition || original.desc || "";
+    original.unit = source.unit || original.unit || "pièce";
     original.price = source.unitPrice === null ? null : Number(source.unitPrice);
   });
   reconstruireIndex();
@@ -4630,14 +4972,14 @@ function reintegrerArticlesDejaCommandes(order){
   const manquants = order.lines.filter(l => l && l.id && !existants[l.id]);
   if (!manquants.length) return;
   const nomBloc = "Articles déjà commandés";
-  let bloc = CATALOG.matchMenu.groups.find(g => g.name === nomBloc);
-  if (!bloc){ bloc = { name:nomBloc, items:[] }; CATALOG.matchMenu.groups.push(bloc); }
+  let bloc = CATALOG.matchMenu.groups.find(g => normaliserCatalogue(g.name) === normaliserCatalogue(nomBloc));
+  if (!bloc){ bloc = { name:tx(nomBloc,"Previously ordered items","Artículos pedidos anteriormente","Articoli già ordinati"), items:[] }; CATALOG.matchMenu.groups.push(bloc); }
   manquants.forEach(l => {
     if (bloc.items.some(it => it.id === l.id)) return;
     bloc.items.push({
-      id:String(l.id), name:trText(l.name, "fr") || "Article historique",
-      desc:trText(l.composition, "fr") || "Article conservé depuis le brouillon",
-      price:l.unitPrice === null ? null : Number(l.unitPrice), unit:String(l.unit || "pièce"), historique:true
+      id:String(l.id), name:l.name || tx("Article historique","Previous item","Artículo anterior","Articolo precedente"),
+      desc:l.composition || tx("Article conservé depuis le brouillon","Item retained from the draft","Artículo conservado del borrador","Articolo conservato dalla bozza"),
+      price:l.unitPrice === null ? null : Number(l.unitPrice), unit:l.unit || "pièce", historique:true
     });
   });
   reconstruireIndex();
@@ -4974,17 +5316,38 @@ async function chargerDemandesAcces(){
         ${d.status==="pending"?`<button class="bt bt-plein" data-approve="${esc(d.id)}">Créer la fiche et préparer WhatsApp</button><button class="bt bt-vide" data-reject="${esc(d.id)}">Refuser</button>`:""}
         ${d.status==="email_pending"?`<button class="bt bt-plein" data-resend="${esc(d.id)}">Préparer WhatsApp avec le lien et le code</button>`:""}
         ${d.match_id?`<button class="bt bt-vide" data-open-match="${esc(d.match_id)}">Ouvrir la fiche</button>`:""}
+        <button class="bt bt-vide bt-danger" data-delete-request="${esc(d.id)}">Supprimer le dossier</button>
       </div><div class="demande-admin-result" data-result="${esc(d.id)}" hidden></div>
     </article>`).join("") || `<div class="adm-fiche"><span>Aucune demande reçue pour le moment.</span></div>`}</div>`;
     liste.querySelectorAll("[data-approve]").forEach(b => b.addEventListener("click", () => traiterDemandeAcces(b.dataset.approve,"approve")));
     liste.querySelectorAll("[data-reject]").forEach(b => b.addEventListener("click", () => traiterDemandeAcces(b.dataset.reject,"reject")));
     liste.querySelectorAll("[data-resend]").forEach(b => b.addEventListener("click", () => traiterDemandeAcces(b.dataset.resend,"resend")));
+    liste.querySelectorAll("[data-delete-request]").forEach(b => b.addEventListener("click", () => supprimerDemandeAcces(b.dataset.deleteRequest)));
     liste.querySelectorAll("[data-open-match]").forEach(b => b.addEventListener("click", () => {
       const match = (data.matches || []).find(m => m.id === b.dataset.openMatch);
       if (match) appliquerFicheDistante(match, false);
     }));
   } catch(e){
     liste.innerHTML = `<p class="acces-erreur">${esc(e.message)}</p>`;
+  }
+}
+
+async function supprimerDemandeAcces(id){
+  const carte = document.querySelector(`[data-request-card="${CSS.escape(id)}"]`);
+  const club = carte?.dataset.club || "ce club";
+  const reference = carte?.dataset.reference || id;
+  if (!confirm(`Supprimer définitivement la demande ${reference} de ${club} ?\n\nCette action retire uniquement le dossier de demande WhatsApp. La fiche de match éventuellement créée reste conservée.`)) return;
+  const bouton = carte && carte.querySelector("[data-delete-request]");
+  if (bouton){ bouton.disabled = true; bouton.textContent = "Suppression…"; }
+  try {
+    await stcApi("admin_access_request_delete", { token:STC_REMOTE.adminToken, requestId:id });
+    if (carte) carte.remove();
+    const liste = document.getElementById("demandesListe");
+    if (liste && !liste.querySelector("[data-request-card]")) liste.innerHTML = `<div class="adm-fiche"><span>Aucune demande reçue pour le moment.</span></div>`;
+    notifier("Dossier de demande supprimé");
+  } catch(erreur){
+    if (bouton){ bouton.disabled = false; bouton.textContent = "Supprimer le dossier"; }
+    notifier(erreur.message || "Suppression impossible");
   }
 }
 
@@ -5007,7 +5370,7 @@ async function activerNotificationsAdmin(){
     if (permission !== "granted") throw new Error("Notifications refusées. Autorisez-les dans les réglages du téléphone.");
     const status = await stcApi("admin_notification_status", { token:STC_REMOTE.adminToken });
     if (!status.vapid_public_key) throw new Error("La clé de notification n’est pas configurée.");
-    const registration = await navigator.serviceWorker.register("./sw.js?v=41", { scope:"./", updateViaCache:"none" });
+    const registration = await navigator.serviceWorker.register("./sw.js?v=42", { scope:"./", updateViaCache:"none" });
     await navigator.serviceWorker.ready;
     let subscription = await registration.pushManager.getSubscription();
     if (!subscription) subscription = await registration.pushManager.subscribe({ userVisibleOnly:true, applicationServerKey:urlBase64EnOctets(status.vapid_public_key) });
@@ -5392,11 +5755,11 @@ function construireVueArchive(archive){
     opponent:matchBrut.opponent || matchConfig.opponent || archive.establishment?.name || "Équipe visiteuse",
     competition:matchBrut.competition || matchConfig.competition || "Ligue 1",
     journee:matchBrut.match_day || matchConfig.journee || "",
-    date:dateMatchFR(matchDate),
+    date:dateMatchFR(matchDate), isoDate:matchDate,
     kickoff:matchBrut.kickoff || matchConfig.kickoff || "à confirmer",
     venueFull:matchBrut.venue || matchConfig.venueFull || MATCH.venueFull,
     orderLeadDays:matchBrut.order_lead_days || matchConfig.orderLeadDays || 7,
-    orderDeadline:dateMatchFR(deadline),
+    orderDeadline:dateMatchFR(deadline), orderDeadlineISO:deadline,
     orderDeadlineShort:deadline ? new Date(`${deadline}T12:00:00`).toLocaleDateString("fr-FR") : ""
   };
   donnees.devisNumber = donnees.devisNumber || ligneCommande.order_number;
@@ -5421,22 +5784,23 @@ function construireVueArchive(archive){
 function construireVueArchiveSecours(archive){
   const commande = archive.order || {};
   const donnees = commande.order_data || {};
+  const lang = devisLangue(donnees), d = cle => devisTexte(cle,lang), eurArchive = valeur => formatEUR(valeur,lang);
   const match = archive.match || {};
   const club = donnees.club || archive.establishment?.name || match.opponent || "Équipe visiteuse";
   const lignes = Array.isArray(commande.lines) ? commande.lines : [];
   const totals = commande.totals || {};
   const signature = /^data:image\/png;base64,[A-Za-z0-9+/=]+$/.test(String(donnees.signatureData || "")) ? donnees.signatureData : "";
   const lignesHTML = lignes.map(ligne => `<tr>
-    <td><b>${esc(trText(ligne.name,"fr") || "Article")}</b><div class="sub">${esc(ligne.groupName || ligne.sectionLabel || "")}${ligne.composition ? " — " + esc(trText(ligne.composition,"fr")) : ""}${ligne.comment ? "<br><b>Commentaire :</b> " + esc(ligne.comment) : ""}</div></td>
-    <td class="d">${Number(ligne.qty)||0}</td><td class="d">${esc(ligne.unit || "unité")}</td>
-    <td class="d">${ligne.unitPrice == null ? "à chiffrer" : formatEUR(Number(ligne.unitPrice)||0)}</td>
-    <td class="d">${ligne.unitPrice == null ? "à chiffrer" : formatEUR(Number(ligne.lineHT)||0)}</td>
+    <td><b>${esc(trText(ligne.name,lang) || d("designation"))}</b><div class="sub">${esc(trText(ligne.groupName || ligne.sectionLabel,lang))}${ligne.composition ? " — " + esc(trText(ligne.composition,lang)) : ""}${ligne.comment ? `<br><b>${d("comment")} :</b> ` + esc(ligne.comment) : ""}</div></td>
+    <td class="d">${Number(ligne.qty)||0}</td><td class="d">${esc(trUnit(ligne.unit || "unité",lang))}</td>
+    <td class="d">${ligne.unitPrice == null ? d("toPrice") : eurArchive(Number(ligne.unitPrice)||0)}</td>
+    <td class="d">${ligne.unitPrice == null ? d("toPrice") : eurArchive(Number(ligne.lineHT)||0)}</td>
   </tr>`).join("");
   return {
-    number:commande.order_number || donnees.devisNumber || "Bon signé",
-    html:`<div class="feuille" id="feuille"><div class="d-tete"><div class="d-brand"><div class="d-logos"><img class="d-brand-logo" src="${LOGO_BLANC}" alt="API Restauration"></div><div class="d-brand-copy"><b>Bon de commande signé</b><br>Équipe visiteuse · Stade CEPAC Vélodrome</div></div><div class="dr"><h2>BON SIGNÉ</h2><div class="n">N° ${esc(commande.order_number || donnees.devisNumber || "")}</div><div class="n">${esc(dateHeureFR(commande.signed_at || archive.archived_at))}</div></div><div class="tampon">Bon signé · archivé</div></div>
-    <div class="d-corps"><div class="d-block d-hero"><div class="d-lbl">Client et rencontre</div><div class="d-hero-title">${esc(club)} — OM × ${esc(match.opponent || club)}</div><div class="d-hero-meta">${esc(dateMatchFR(match.match_date || ""))} · ${esc(match.kickoff || "")}</div></div>
-    <div class="d-block"><div class="d-lbl">Détail de la commande</div><table class="dt"><thead><tr><th>Désignation</th><th class="d">Qté</th><th class="d">Unité</th><th class="d">P.U. HT</th><th class="d">Total HT</th></tr></thead><tbody>${lignesHTML}</tbody></table><div class="d-totaux"><div class="r ht"><span>Total HT</span><b>${formatEUR(Number(totals.totalHT)||0)}</b></div><div class="r"><span>TVA</span><b>${formatEUR(Number(totals.tvaAmount)||0)}</b></div><div class="r ttc"><span>Total TTC</span><b>${formatEUR(Number(totals.totalTTC)||0)}</b></div></div></div>
+    number:commande.order_number || donnees.devisNumber || d("signed"),
+    html:`<div class="feuille" id="feuille"><div class="d-tete"><div class="d-brand"><div class="d-logos"><img class="d-brand-logo" src="${LOGO_BLANC}" alt="API Restauration"></div><div class="d-brand-copy"><b>${d("afterMatch")}</b><br>${d("visiting")}</div></div><div class="dr"><h2>${d("signed")}</h2><div class="n">${d("number")} ${esc(commande.order_number || donnees.devisNumber || "")}</div><div class="n">${esc(formatDateHeureLang(commande.signed_at || archive.archived_at,lang))}</div></div><div class="tampon">${d("statusSigned")}</div></div>
+    <div class="d-corps"><div class="d-block d-hero"><div class="d-lbl">${d("client")}</div><div class="d-hero-title">${esc(club)} — OM × ${esc(match.opponent || club)}</div><div class="d-hero-meta">${esc(formatDateLang(match.match_date || "",lang))} · ${esc(match.kickoff || "")}</div></div>
+    <div class="d-block"><div class="d-lbl">${d("details")}</div><table class="dt"><thead><tr><th>${d("designation")}</th><th class="d">${d("qty")}</th><th class="d">${d("unit")}</th><th class="d">${d("unitPrice")}</th><th class="d">${d("totalHT")}</th></tr></thead><tbody>${lignesHTML}</tbody></table><div class="d-totaux"><div class="r ht"><span>${d("totalHT")}</span><b>${eurArchive(Number(totals.totalHT)||0)}</b></div><div class="r"><span>${lang==="en"?"VAT":lang==="fr"?"TVA":"IVA"}</span><b>${eurArchive(Number(totals.tvaAmount)||0)}</b></div><div class="r ttc"><span>${d("totalTTC")}</span><b>${eurArchive(Number(totals.totalTTC)||0)}</b></div></div></div>
     <div class="d-block"><div class="d-lbl">Bon pour accord</div><div class="pave"><div class="pave-c"><div class="pave-t">Le client</div><div class="pave-ch"><span>Signataire</span><i>${esc(commande.signed_by || donnees.signedBy || "")}</i></div><div class="pave-ch"><span>Qualité</span><i>${esc(commande.signed_role || donnees.signedRole || "")}</i></div><div class="pave-ch"><span>Le</span><i>${esc(dateHeureFR(commande.signed_at || archive.archived_at))}</i></div><div class="pave-z">${signature ? `<img class="signature-preview" src="${signature}" alt="Signature numérique du client">` : "Signature enregistrée dans l’archive"}</div></div><div class="pave-c"><div class="pave-t">API Restauration</div><div class="pave-ch"><span>Contact</span><i>Amar Lacidi</i></div><div class="pave-ch"><span>Portable</span><i>07 49 00 37 36</i></div></div></div></div></div></div>`
   };
 }
@@ -5535,14 +5899,14 @@ function rendreBandeau(){
   const carteLabel = `${trText(CATALOG.pizzas.label)} & ${trText(CATALOG.sushi.label)}`;
   q("titreCarte").textContent = carteLabel;
   q("tabCarte").textContent = carteLabel;
-  const matchLabelDefaut = /^Menu du match(?:\s—.*)?$/.test(CATALOG.matchMenu.label);
-  const menuLabel = matchLabelDefaut ? `${t("lbl_menu_du_match")} — ${MATCH.opponent}` : CATALOG.matchMenu.label;
+  const matchLabelDefaut = estLibelleMenuAutomatique(CATALOG.matchMenu.label);
+  const menuLabel = matchLabelDefaut ? trText(libelleMenuMatch()) : trText(CATALOG.matchMenu.label);
   q("titreMenu").textContent = menuLabel;
   q("tabMatch").textContent = menuLabel;
-  const boissonsLabel = CATALOG.boissons.label === "Boissons" ? t("lbl_boissons") : CATALOG.boissons.label;
+  const boissonsLabel = trText(CATALOG.boissons.label) || t("lbl_boissons");
   q("titreBoissons").textContent = boissonsLabel;
   q("tabBoissons").textContent = boissonsLabel;
-  const materielLabel = CATALOG.materiel.label === "Matériel logistique" ? t("lbl_materiel") : CATALOG.materiel.label;
+  const materielLabel = trText(CATALOG.materiel.label) || t("lbl_materiel");
   q("titreMateriel").textContent = materielLabel;
   q("tabMateriel").textContent = materielLabel;
   q("etiqMatch").textContent = MATCH.dateShort;
@@ -5578,7 +5942,7 @@ function carteHTML(it){
     <div class="ca-nom">${esc(nom)}</div>
     ${et.length ? `<div class="ca-etiqs">${et.join("")}</div>` : ""}
     <div class="ca-desc ca-composition"><b>${t("lbl_composition")}</b><br>${esc(desc || t("lbl_composition_a_preciser"))}</div>
-    ${it.note ? `<div class="ca-note">${esc(it.note)}</div>` : ""}
+    ${it.note ? `<div class="ca-note">${esc(trText(it.note))}</div>` : ""}
     <div class="ca-bas">
       ${prixHTML(it)}
       <div class="compteur" role="group" aria-label="${tf("aria_quantite", { nom })}">
@@ -5591,6 +5955,41 @@ function carteHTML(it){
     <textarea class="ca-comment" data-comment="${it.id}" maxlength="2000" placeholder="${t("ph_commentaire_ligne")}">${esc(state.comments[it.id] || "")}</textarea>
   </div>`;
 }
+function carteVariantesHTML(items){
+  const premier = items[0];
+  const titre = trText(premier.cardTitle || premier.name);
+  const classePhoto = premier.photoMode === "product" ? "ca-photo ca-photo-produit" : (premier.photoMode === "food" ? "ca-photo ca-photo-food" : "ca-photo");
+  const actif = items.some(item => nb(item.id) > 0);
+  return `<div class="carte carte-variantes ${actif ? "prise" : ""}" id="cg-${esc(premier.cardGroup)}" data-card-items="${items.map(item => item.id).join(",")}">
+    ${premier.photo ? `<img class="${classePhoto}" src="${esc(premier.photo)}" alt="${esc(titre)}" loading="lazy" decoding="async">` : ""}
+    <div class="ca-nom">${esc(titre)}</div>
+    <div class="ca-desc">${trText(tx("Choisissez séparément le nombre de pizzas sur chaque base.","Choose the number of pizzas for each base separately.","Elija por separado el número de pizzas de cada base.","Scegliete separatamente il numero di pizze per ogni base."))}</div>
+    <div class="ca-variantes">${items.map(item => {
+      const n = nb(item.id), nom = trText(item.variantName || item.name), desc = trText(item.desc);
+      return `<div class="ca-variante" id="vr-${item.id}">
+        <div><div class="ca-variante-nom">${esc(nom)}</div><div class="ca-desc">${esc(desc)}</div><div class="ca-variante-prix">${prixHTML(item)}</div></div>
+        <div class="compteur" role="group" aria-label="${tf("aria_quantite", { nom:trText(item.name) })}">
+          <button type="button" data-a="m" data-i="${item.id}" aria-label="${tf("aria_retirer_un", { nom:trText(item.name) })}">−</button>
+          <span class="n" id="n-${item.id}">${n}</span>
+          <button type="button" data-a="p" data-i="${item.id}" aria-label="${tf("aria_ajouter_un", { nom:trText(item.name) })}">+</button>
+        </div>
+        <div class="ca-ligne" id="l-${item.id}">${ligneHTML(item, n)}</div>
+        <textarea class="ca-comment" data-comment="${item.id}" maxlength="2000" placeholder="${t("ph_commentaire_ligne")}">${esc(state.comments[item.id] || "")}</textarea>
+      </div>`;
+    }).join("")}</div>
+  </div>`;
+}
+function cartesGroupeHTML(items){
+  const sorties = [];
+  const groupesRendus = new Set();
+  (items || []).forEach(item => {
+    if (!item.cardGroup){ sorties.push(carteHTML(item)); return; }
+    if (groupesRendus.has(item.cardGroup)) return;
+    groupesRendus.add(item.cardGroup);
+    sorties.push(carteVariantesHTML(items.filter(candidat => candidat.cardGroup === item.cardGroup)));
+  });
+  return sorties.join("");
+}
 const LOGOS_PARTENAIRES = {
   get casadimeco(){ return LOGO_CASADIMECO; },
   get yume(){ return LOGO_YUME; },
@@ -5599,16 +5998,18 @@ const LOGOS_PARTENAIRES = {
 };
 const FAMILLES = {};
 function estGroupeSnacking(groupe){
-  return /snack|finger|sandwich|burger|wrap|tender|bao|pizza/.test(normaliserCatalogue(groupe && groupe.name));
+  return Boolean(groupe && groupe.posterSlot) || /snacking sale|sandwich chaud/.test(normaliserCatalogue(groupe && groupe.name));
 }
 function afficheFamilleHTML(groupe, cle){
-  const estSnacking = cle === "match" && (groupe.posterSlot || estGroupeSnacking(groupe));
-  if (!groupe.coverPhoto && !estSnacking) return "";
-  const titre = groupe.coverTitle || (estSnacking ? "Affiche du snacking salé" : "Visuel de la prestation");
+  const estSnacking = cle === "match" && estGroupeSnacking(groupe);
+  if (!estSnacking) return "";
+  const titre = trText(groupe.coverTitle || tx("Affiche du snacking salé","Savoury snacks poster","Cartel de snacking salado","Locandina snack salati"));
+  const legende = trText(tx("Visuel de la prestation · format A4 portrait","Service visual · A4 portrait format","Visual de la prestación · formato A4 vertical","Visual della proposta · formato A4 verticale"));
   if (groupe.coverPhoto){
-    return `<figure class="fam-affiche"><img src="${esc(groupe.coverPhoto)}" alt="${esc(titre)}" loading="lazy" decoding="async"><figcaption><b>${esc(titre)}</b><span>Visuel de la prestation</span></figcaption></figure>`;
+    return `<figure class="fam-affiche"><img src="${esc(groupe.coverPhoto)}" alt="${esc(titre)}" loading="lazy" decoding="async"><figcaption><b>${esc(titre)}</b><span>${esc(legende)}</span></figcaption></figure>`;
   }
-  return `<div class="fam-affiche fam-affiche-vide"><div><b>${esc(titre)}</b><span>Affiche à intégrer depuis l’espace administrateur pour cette prestation.</span></div></div>`;
+  const aide = trText(tx("Affiche A4 portrait à intégrer depuis l’espace administrateur à l’approche du match.","Add the A4 portrait poster from the admin area before the match.","Añada el cartel A4 vertical desde el espacio de administración antes del partido.","Aggiungete la locandina A4 verticale dall’area amministratore prima della partita."));
+  return `<div class="fam-affiche fam-affiche-vide"><div><b>${esc(titre)}</b><span>${esc(aide)}</span></div></div>`;
 }
 function galerieFamilleHTML(groupe){
   if (!Array.isArray(groupe.photoGallery) || !groupe.photoGallery.length) return "";
@@ -5620,13 +6021,14 @@ const famillesHTML = (gs, cle) => gs.map((g, i) => {
   FAMILLES[gid] = g.items.map(it => it.id);
   const logo = g.logo && LOGOS_PARTENAIRES[g.logo];
   const ouvert = Boolean(g.openByDefault);
+  const nomGroupe = trText(g.name);
   return `<button type="button" class="famille-tog" data-fam="${gid}" aria-expanded="${ouvert ? "true" : "false"}" aria-controls="fam-${gid}">
-      ${logo ? `<img class="fam-logo" src="${logo}" alt="${esc(g.name)}">` : ""}
-      <span class="fam-nom">${esc(g.name)}</span>
+      ${logo ? `<img class="fam-logo" src="${logo}" alt="${esc(nomGroupe)}">` : ""}
+      <span class="fam-nom">${esc(nomGroupe)}</span>
       <span class="fam-cpt" id="cpt-${gid}"></span>
       <span class="fam-ch" aria-hidden="true"></span>
     </button>
-    <div class="cartes" id="fam-${gid}" ${ouvert ? "" : "hidden"}>${afficheFamilleHTML(g, cle)}${galerieFamilleHTML(g)}${g.items.map(carteHTML).join("")}</div>`;
+    <div class="cartes" id="fam-${gid}" ${ouvert ? "" : "hidden"}>${afficheFamilleHTML(g, cle)}${galerieFamilleHTML(g)}${cartesGroupeHTML(g.items)}</div>`;
 }).join("");
 
 function majFamilles(){
@@ -5668,10 +6070,14 @@ function rendreCatalogue(){
 }
 function rafraichirCarte(id){
   const it = FLAT[id], n = nb(id), c = q("c-"+id);
-  if (!c) return;
-  c.classList.toggle("prise", n>0);
-  q("n-"+id).textContent = n;
-  q("l-"+id).textContent = ligneHTML(it, n);
+  if (c) c.classList.toggle("prise", n>0);
+  if (it && it.cardGroup){
+    const groupe = q("cg-" + it.cardGroup);
+    const ids = groupe ? String(groupe.dataset.cardItems || "").split(",").filter(Boolean) : [];
+    if (groupe) groupe.classList.toggle("prise", ids.some(itemId => nb(itemId) > 0));
+  }
+  if (q("n-"+id)) q("n-"+id).textContent = n;
+  if (q("l-"+id)) q("l-"+id).textContent = ligneHTML(it, n);
   majFamilles();
 }
 
@@ -5679,13 +6085,18 @@ function rafraichirCarte(id){
    MISE À DISPOSITION
    ============================================================ */
 function rendreMAD(){
+  const mots = {
+    hours:trText(tx("heures","hours","horas","ore")),
+    person:trText(tx("personne","person","persona","persona")),
+    persons:trText(tx("personnes","people","personas","persone"))
+  };
   q("madPhases").innerHTML = LOGISTICS.lines.map(l => `
     <div class="mad-phase">
-      <div class="mad-h"><span class="n">${l.totalHours}</span><span class="u">heures</span></div>
+      <div class="mad-h"><span class="n">${l.totalHours}</span><span class="u">${mots.hours}</span></div>
       <div class="mad-info">
-        <h4>${esc(l.label)}</h4>
-        <div class="d">${esc(l.detail)}</div>
-        <div class="calc">${l.people} personne${l.people>1?"s":""} × ${l.hours} h × ${eur(LOGISTICS.rate)}/h</div>
+        <h4>${esc(texteOperationnel(l.label,currentLang))}</h4>
+        <div class="d">${esc(texteOperationnel(l.detail,currentLang))}</div>
+        <div class="calc">${l.people} ${l.people>1?mots.persons:mots.person} × ${l.hours} h × ${eur(LOGISTICS.rate)}/h</div>
       </div>
       <div class="mad-mt">${eur(l.cost)}</div>
     </div>`).join("");
@@ -5694,7 +6105,7 @@ function rendreMAD(){
   q("madInclus").innerHTML = LOGISTICS.included.map(i => `
     <div class="i">
       <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#5E7F3A" stroke-width="1.7"/><path d="M8 12.3l2.6 2.6L16 9.6" stroke="#5E7F3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>${esc(i)}</span>
+      <span>${esc(texteOperationnel(i,currentLang))}</span>
     </div>`).join("");
 }
 
@@ -5730,7 +6141,7 @@ function rendrePanier(){
           : (l.priceKnown ? `<span class="m">${eur(l.lineHT)}</span>` : `<span class="m achiffrer">${t("lbl_a_chiffrer_minuscule")}</span>`);
         return `<div class="bon-l">
           <span class="q">${l.qty} ×</span>
-          <span class="n">${esc(nom)}<small>${esc(l.groupName)}${l.comment ? " · " + esc(l.comment) : ""}</small></span>
+          <span class="n">${esc(nom)}<small>${esc(trText(l.groupName))}${l.comment ? " · " + esc(l.comment) : ""}</small></span>
           ${m}
           <button class="x" data-rm="${esc(l.id)}" aria-label="${tf("aria_retirer_du_bon", { nom })}">✕</button>
         </div>`;
@@ -6045,6 +6456,7 @@ function lireFormulaire(){
   const signatureData = signatureDepuisCanvas();
   return {
     ref: state.ref,
+    language:currentLang,
     club:g("fClub"), name:g("fNom"), role:g("fRole"), email:g("fMail"), phone:g("fTel"),
     headcount: parseInt(q("fEff").value,10) || LOGISTICS.basePersons,
     poNumber:g("fBc"), paNumber:g("fDa"),
@@ -6164,7 +6576,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   rendreBandeau(); rendreCatalogue(); rendreMAD(); rendrePanier();
   initOnglets(); initTiroir();
   if ("serviceWorker" in navigator){
-    navigator.serviceWorker.register("./sw.js?v=41", { scope:"./", updateViaCache:"none" }).then(reg => reg.update()).catch(() => {});
+    navigator.serviceWorker.register("./sw.js?v=42", { scope:"./", updateViaCache:"none" }).then(reg => reg.update()).catch(() => {});
   }
   await initialiserModeDistant();
   remonterEnHautAuDemarrage();
