@@ -45,7 +45,7 @@ const assertions = [
   ["multilingual quote", /const DEVIS_I18N = \{[\s\S]*fr:\{[\s\S]*en:\{[\s\S]*es:\{[\s\S]*it:\{/],
   ["order language persistence", /language:currentLang/],
   ["startup scroll top", /history\.scrollRestoration = "manual"[\s\S]*remonterEnHautAuDemarrage/],
-  ["service worker version aligned", html.includes("./sw.js?v=42") && sw.includes('VERSION = "42"')]
+  ["service worker version aligned", html.includes("./sw.js?v=43") && sw.includes('VERSION = "43"')]
   ,["drink family order at runtime", JSON.stringify(runtime.drinks.map(group => group.name)) === JSON.stringify(["Bières","Boissons gazeuses · Coca-Cola","Eaux","Jus & smoothies","Yaourts à boire"])]
   ,["no duplicate Plein Fruit at runtime", runtime.drinks.flatMap(group => group.ids).filter(id => id === "bv-plein-fruit-pomme-bio").length === 1]
   ,["Pom'Potes removed from drinks", !runtime.drinks.flatMap(group => group.ids).includes("bv-pompotes-pomme")]
@@ -55,6 +55,7 @@ const assertions = [
   ,["quote languages render", runtime.quotes.en.html.includes("QUOTE") && runtime.quotes.es.html.includes("PRESUPUESTO") && runtime.quotes.it.html.includes("PREVENTIVO")]
   ,["quote translations preserved", runtime.quotes.en.html.includes("Salmon nigiri") && runtime.quotes.es.text.includes("Nigiri de salmón") && !JSON.stringify(runtime.quotes).includes("[object Object]")]
   ,["fallback archive translated", /construireVueArchiveSecours[\s\S]*d\("approved"\)[\s\S]*d\("fullName"\)[\s\S]*formatDateHeureLang/]
+  ,["access code normalized", /ouvrirAccesEquipe\(\)[\s\S]*toUpperCase\(\)[\s\S]*replace\(\/\[–—−\]\/g, "-"\)[\s\S]*replace\(\/\\s\+\/g, ""\)/]
 ];
 
 const failures = assertions.filter(([,test]) => typeof test === "boolean" ? !test : !test.test(html));

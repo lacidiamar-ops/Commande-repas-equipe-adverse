@@ -30,7 +30,7 @@ The baseline implementation was inspected at desktop and 390 × 844 mobile viewp
 
 ## Functional regression evidence
 
-- `npm test`: 22 catalog and workflow checks passed.
+- `npm test`: 23 catalog and workflow checks passed.
 - Inline JavaScript compilation: passed.
 - Seven sushi products render at 1.65 EUR per piece, with no box/plateau products.
 - Margherita renders at 14.90 EUR and has a single catalog entry.
@@ -40,6 +40,7 @@ The baseline implementation was inspected at desktop and 390 × 844 mobile viewp
 - The fallback signed-order archive now translates acceptance, client, role, date, signature, contact, and mobile labels.
 - Startup scroll restoration is forced to the top.
 - WhatsApp access-request deletion is protected by administrator authentication and confirmation.
+- Access codes are normalized to uppercase with standard hyphens before authentication; Supabase Edge Function v24 applies the same canonicalization server-side.
 
 ## Findings
 

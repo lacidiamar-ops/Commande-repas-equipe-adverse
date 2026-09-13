@@ -4849,7 +4849,9 @@ async function envoyerDemandeAcces(event){
 let modalCloseTimer = null;
 
 async function ouvrirAccesEquipe(){
-  const code = document.getElementById("accesCode").value.trim();
+  const champCode = document.getElementById("accesCode");
+  const code = champCode.value.trim().toUpperCase().replace(/[–—−]/g, "-").replace(/\s+/g, "");
+  champCode.value = code;
   const err = document.getElementById("accesErreur");
   const bouton = document.getElementById("accesValider");
   if (!code){ err.textContent = "Indiquez le code transmis par API Restauration."; return; }
@@ -5370,7 +5372,7 @@ async function activerNotificationsAdmin(){
     if (permission !== "granted") throw new Error("Notifications refusées. Autorisez-les dans les réglages du téléphone.");
     const status = await stcApi("admin_notification_status", { token:STC_REMOTE.adminToken });
     if (!status.vapid_public_key) throw new Error("La clé de notification n’est pas configurée.");
-    const registration = await navigator.serviceWorker.register("./sw.js?v=42", { scope:"./", updateViaCache:"none" });
+    const registration = await navigator.serviceWorker.register("./sw.js?v=43", { scope:"./", updateViaCache:"none" });
     await navigator.serviceWorker.ready;
     let subscription = await registration.pushManager.getSubscription();
     if (!subscription) subscription = await registration.pushManager.subscribe({ userVisibleOnly:true, applicationServerKey:urlBase64EnOctets(status.vapid_public_key) });
@@ -6576,7 +6578,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   rendreBandeau(); rendreCatalogue(); rendreMAD(); rendrePanier();
   initOnglets(); initTiroir();
   if ("serviceWorker" in navigator){
-    navigator.serviceWorker.register("./sw.js?v=42", { scope:"./", updateViaCache:"none" }).then(reg => reg.update()).catch(() => {});
+    navigator.serviceWorker.register("./sw.js?v=43", { scope:"./", updateViaCache:"none" }).then(reg => reg.update()).catch(() => {});
   }
   await initialiserModeDistant();
   remonterEnHautAuDemarrage();
