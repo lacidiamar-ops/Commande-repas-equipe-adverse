@@ -1059,9 +1059,9 @@ table.dt .sub{ font-size:11px; color:var(--gris-clair); margin-top:2px; }
 .demande-admin-list{display:grid;gap:14px}.demande-admin-card{border:1px solid #d7e1eb;border-radius:15px;padding:17px;background:#fff}.demande-admin-card.pending{border-left:5px solid #d5a93e}.demande-admin-card.email_pending{border-left:5px solid #d06e25}.demande-admin-card.sent{border-left:5px solid #3b8658}.demande-admin-card.rejected{opacity:.72}.demande-admin-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.demande-admin-top h4{margin:0 0 5px;font-size:1rem}.demande-admin-meta{font-size:.82rem;line-height:1.55;color:#53677b}.demande-admin-message{margin:10px 0;padding:10px 12px;background:#f4f7fa;border-radius:9px;font-size:.84rem}.demande-admin-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.demande-admin-result{margin-top:12px;padding:12px;background:#edf7ff;border-radius:9px;font-size:.82rem;line-height:1.55;word-break:break-word}.bt-danger{border-color:#B64040!important;color:#8F2929!important;background:#FFF7F7!important}.bt-danger:hover{background:#FDE8E8!important}
 @media(max-width:720px){.demande-grid,.notif-config{grid-template-columns:1fr}.demande-grid .large{grid-column:auto}.demande-dialog{border-radius:18px}.demande-head,.demande-form{padding:20px}.demande-admin-top{display:block}.demande-admin-top .notif-state{margin-top:8px}}
 /* ---------- Avis clients (accueil + modale + admin) ---------- */
-.avis{ margin-top:22px; padding:20px; border:1px solid rgba(212,169,87,.34); border-radius:var(--r-m); background:#1B2831; }
+.avis-clients{ margin-top:22px; padding:20px; border:1px solid rgba(212,169,87,.34); border-radius:var(--r-m); background:#1B2831; }
 .avis-kicker{ display:block; color:var(--safran); font:700 9px var(--f-chiffre); letter-spacing:.14em; text-transform:uppercase; }
-.avis h2{ margin-top:9px; color:var(--blanc); font-size:19px; line-height:1.2; }
+.avis-clients h2{ margin-top:9px; color:var(--blanc); font-size:19px; line-height:1.2; }
 .avis-intro{ margin-top:8px; color:#AEBCC4; font-size:12px; line-height:1.55; }
 .avis-resume{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:16px; padding:14px 16px; border:1px solid rgba(255,255,255,.13); border-radius:var(--r-m); background:#16212A; }
 .avis-note{ display:flex; align-items:baseline; gap:5px; color:var(--blanc); font:800 30px var(--f-chiffre); line-height:1; }
@@ -5284,7 +5284,7 @@ function creerEcranAcces(){
           </div>
         </aside>
 
-        <section class="avis" id="avisAccueil" aria-labelledby="avisTitre">
+        <section class="avis-clients" id="avisAccueil" aria-labelledby="avisTitre">
           <span class="avis-kicker" data-i18n="acc_contact_kicker">${t("acc_contact_kicker")}</span>
           <h2 id="avisTitre" data-i18n="avis_titre">${t("avis_titre")}</h2>
           <p class="avis-intro" data-i18n="avis_intro">${t("avis_intro")}</p>
