@@ -3964,12 +3964,13 @@ async function chargerPlanning(){
           <div class="planning-date"><b>${jour}</b><span>${esc(mois)}<br>${date ? date.getFullYear() : ""}</span></div>
           <div class="planning-main"><div class="planning-top"><div class="planning-club">${logo}<div><h4>OM — ${esc(m.opponent)}</h4><small>${esc(m.competition || "Compétition")} · J${Number(m.match_day)||"—"}</small></div></div><span class="fiche-etat ${etat.key}">${esc(etat.label)}</span></div>
           <div class="planning-meta">Coup d’envoi : <b>${esc(m.kickoff || "à confirmer")}</b> · Échéance : <b>${esc(dateMatchFR(m.order_deadline || ""))}</b>${order ? `<br>${esc(order.order_number || "Commande")} · ${formatEUR(Number((order.totals || {}).totalHT)||0)} HT` : "<br>Aucune quantité saisie par le club"}${m.config && m.config.crest ? "" : "<br><b>Logo du club à ajouter</b> dans Identité & logo"}</div>
-          <div class="planning-actions"><button class="bt bt-vide" data-edit-match="${esc(m.id)}">Modifier la fiche</button>${etat.key === "signed" && order && order.document_path ? `<button class="bt bt-plein" data-open-planning-archive="${esc(order.id)}">Voir le bon signé</button>` : `<button class="bt bt-plein" data-share-match="${esc(m.id)}">${m.status === "published" ? "Renvoyer via WhatsApp" : "Transmettre via WhatsApp"}</button>`}</div></div>
+          <div class="planning-actions"><button class="bt bt-vide" data-edit-match="${esc(m.id)}">Modifier la fiche</button>${etat.key === "signed" && order && order.document_path ? `<button class="bt bt-plein" data-open-planning-archive="${esc(order.id)}">Voir le bon signé</button>` : `<button class="bt bt-plein" data-share-match="${esc(m.id)}">${m.status === "published" ? "Renvoyer via WhatsApp" : "Transmettre via WhatsApp"}</button>`}<button class="bt bt-vide bt-danger" data-delete-match="${esc(m.id)}" data-opponent="${esc(m.opponent)}">Supprimer</button></div></div>
         </article>`;
       }).join("") || `<div class="adm-fiche"><span>Aucune fiche ne correspond à cette recherche.</span></div>`}</div>`;
       cible.querySelectorAll("[data-edit-match]").forEach(b => b.addEventListener("click", () => ouvrirMatchDepuisPlanning(b.dataset.editMatch, "match")));
       cible.querySelectorAll("[data-share-match]").forEach(b => b.addEventListener("click", () => ouvrirMatchDepuisPlanning(b.dataset.shareMatch, "online")));
       cible.querySelectorAll("[data-open-planning-archive]").forEach(b => b.addEventListener("click", () => consulterArchiveCommande(b.dataset.openPlanningArchive, b)));
+      cible.querySelectorAll("[data-delete-match]").forEach(b => b.addEventListener("click", () => supprimerFicheMatch(b.dataset.deleteMatch, b.dataset.opponent, b)));
     };
     render("");
     const search = document.getElementById("planningSearch");
@@ -3987,6 +3988,33 @@ function ouvrirMatchDepuisPlanning(matchId, onglet = "match"){
   enrichirMatchDashboard(match, data);
   STC_REMOTE.creatingNewOffer = false;
   appliquerFicheDistante(match, false, onglet);
+}
+
+async function supprimerFicheMatch(matchId, opponent, bouton, forcer = false){
+  const libelle = opponent || "cette fiche";
+  const message = forcer
+    ? `Dernière confirmation : supprimer définitivement la fiche OM — ${libelle}, y compris ses commandes enregistrées ?\n\nCette action est irréversible.`
+    : `Supprimer définitivement la fiche OM — ${libelle} ?\n\nCette action retire la fiche, son catalogue et ses accès. Elle est irréversible.`;
+  if (!confirm(message)) return;
+  if (bouton){ bouton.disabled = true; bouton.textContent = "Suppression…"; }
+  try {
+    const data = await stcApi("admin_delete_match", { token:STC_REMOTE.adminToken, matchId, confirmDeleteOrders:forcer });
+    if (matchId === STC_REMOTE.currentRemoteMatchId){
+      STC_REMOTE.currentRemoteMatchId = "";
+      STC_REMOTE.currentEstablishmentId = "";
+      STC_REMOTE.adminDirty = false;
+    }
+    notifier(`Fiche ${libelle} supprimée${data.deleted_orders ? ` (${data.deleted_orders} commande${data.deleted_orders > 1 ? "s" : ""} incluse${data.deleted_orders > 1 ? "s" : ""})` : ""}`);
+    STC_REMOTE.dashboardData = null;
+    chargerPlanning();
+  } catch(e){
+    if (e && e.code === "match_has_orders"){
+      if (bouton){ bouton.disabled = false; bouton.textContent = "Supprimer"; }
+      return supprimerFicheMatch(matchId, opponent, bouton, true);
+    }
+    if (bouton){ bouton.disabled = false; bouton.textContent = "Supprimer"; }
+    notifier(e.message || "Suppression impossible");
+  }
 }
 
 /* ---------- 1. MATCH ---------- */
@@ -6207,6 +6235,7 @@ async function changerMotDePasseAdmin(){
 function appliquerFicheDistante(match, nouveau, ongletCible = "match"){
   if (!match) return;
   if (match.config) appliquerConfig(JSON.parse(JSON.stringify(match.config)));
+  if (nouveau) window.__crestDataUrl = ""; // une nouvelle fiche démarre sans écusson, même quand elle reprend le catalogue d’une fiche existante
   Object.assign(MATCH, {
     opponent:match.opponent || MATCH.opponent,
     competition:match.competition || MATCH.competition,
