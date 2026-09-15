@@ -1,11 +1,44 @@
-COMMANDE REPAS — VERSION 36
+COMMANDE REPAS — VERSION 44
 ============================
 
-DEPLOIEMENT CLOUDFLARE
-1. Ouvrir Cloudflare > Workers & Pages > votre projet.
-2. Créer un nouveau déploiement par envoi direct.
-3. Déposer tous les fichiers de ce dossier ensemble, ou déposer le ZIP fourni.
-4. Vérifier sur l'accueil la mention « Accueil actif · Version 36 ».
+DEPLOIEMENT (GITHUB -> VERCEL)
+1. Deposer tous les fichiers de ce dossier sur le depot GitHub
+   lacidiamar-ops/Commande-repas-equipe-adverse, branche main.
+2. Vercel redeploie automatiquement le site a chaque commit : rien a envoyer
+   a la main.
+3. Detail complet de la procedure dans DEPLOIEMENT-VERCEL.md.
+
+NOUVEAUTES DE LA VERSION 44
+1. Nouvelle gamme Biscuiterie dans l'onglet « Boissons & biscuiterie » :
+   barres Nakd. (myrtilles, framboises, cacahuetes) a 2,15 EUR HT et
+   energy-balls Nuttree (choco-noisette, pomme-cannelle) a 2,40 EUR HT.
+   Les tarifs restent modifiables depuis Administration > 03 Offre & prix.
+2. Pizzas Moitie moitie et Chevre miel : emmental francais a la place de la
+   mozzarella, dans les quatre langues et sur le devis.
+3. Toutes les familles du bon de commande sont repliees a l'ouverture : le
+   client voit d'abord la liste des gammes, les photos s'affichent au clic.
+4. Avis clients : nouvelle section sur l'accueil et nouvel onglet
+   Administration > Avis clients (voir plus bas).
+
+AVIS CLIENTS
+1. Sur l'accueil, la section « Ils ont evalue notre prestation » affiche la
+   note moyenne, le nombre d'avis et les derniers commentaires verifies.
+2. Le referent clique sur « Noter une prestation », saisit le code d'acces de
+   son bon de commande : son club est reconnu automatiquement.
+3. Il choisit sa fonction, une note de 1 a 5 etoiles et, s'il le souhaite, un
+   commentaire. Aucun nom, telephone ou e-mail n'est affiche.
+4. Un seul avis par club et par match. En revenant avec le meme code, le
+   referent corrige son avis au lieu d'en creer un second.
+5. L'evaluation n'est possible qu'apres la date du match. Pour Olympiakos,
+   elle s'ouvrira donc apres le 15 octobre 2026.
+6. Mode test administrateur : une fois connecte a l'administration, ouvrir
+   Administration > Avis clients > « Tester le depot d'un avis », puis cocher
+   « Mode test administrateur » pour deposer un avis avant la date du match.
+7. Administration > Avis clients permet de consulter la note moyenne, de
+   filtrer par club, par match et par nombre d'etoiles, de publier ou masquer
+   un avis, de corriger la fonction, la note ou le commentaire, et de
+   supprimer un avis avec confirmation. Un avis depose avec un code valide est
+   publie automatiquement.
 
 CRÉER, MODIFIER ET TRANSMETTRE UNE FICHE
 1. Ouvrir Administration > 01 · Mes matchs.
